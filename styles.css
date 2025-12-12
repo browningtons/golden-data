@@ -68,11 +68,18 @@ h1 {
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 24px; /* Increased from 20px */
+  text-transform: uppercase;
+  letter-spacing: 0.05em; /* Adds premium breathing room */
+  font-weight: 800;
+  margin-bottom: 8px;
 }
 
 h3 {
-  font-size: 16px;
+  font-size: 18px; /* Increased from 16px */
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
 }
 
 p {
