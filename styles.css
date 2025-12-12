@@ -3,9 +3,8 @@
    ========================================================= */
 
 /* ===============================
-   1. DESIGN TOKENS (ALWAYS FIRST)
+   1. DESIGN TOKENS
    =============================== */
-
 :root {
   /* --- Core Brand Palette --- */
   --orange: #F04A00;   /* International Orange (signal) */
@@ -23,7 +22,7 @@
 
   /* --- UI Foundations --- */
   --bg: var(--surface-color);
-  --card: #ffffff;
+  --card-bg: #ffffff;
   --text: var(--body-color);
 
   --muted: rgba(15, 23, 42, 0.72);
@@ -36,12 +35,9 @@
 }
 
 /* ===============================
-   2. RESET & GLOBAL BASE STYLES
+   2. RESET & GLOBAL BASE
    =============================== */
-
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -53,16 +49,13 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--body-color);
-  font-family: ui-sans-serif, system-ui, -apple-system,
-               BlinkMacSystemFont, "Segoe UI", Roboto,
-               Helvetica, Arial, sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.5;
 }
 
 /* ===============================
    3. TYPOGRAPHY
    =============================== */
-
 h1, h2, h3 {
   color: var(--heading-color);
   letter-spacing: -0.02em;
@@ -88,6 +81,17 @@ p {
   font-weight: 600;
 }
 
+ul {
+  padding-left: 18px;
+  margin: 10px 0;
+}
+
+li {
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
 a {
   color: var(--accent-secondary);
   text-decoration-thickness: 1.5px;
@@ -99,26 +103,120 @@ a:hover {
 }
 
 /* ===============================
-   4. LAYOUT CONTAINERS
+   4. LAYOUT OBJECTS
    =============================== */
-
 .wrap {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 22px 20px 80px;
 }
 
+/* Standard Section Spacing */
+section {
+  margin-top: 28px;
+}
+
+/* ===============================
+   5. COMPONENTS (Reusable UI)
+   =============================== */
+
+/* --- Cards --- */
 .card {
-  background: var(--card);
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
 
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 15px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--heading-color);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.btn-secondary {
+  background: rgba(15, 23, 42, 0.03);
+  border-color: var(--border);
+  color: var(--body-color);
+}
+
+.btn-secondary:hover {
+  background: rgba(15, 23, 42, 0.05);
+}
+
+/* --- Pills / Tags --- */
+.pill,
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 999px;
+  background: rgba(15, 61, 87, 0.06);
+  border: 1px solid rgba(15, 61, 87, 0.10);
+  color: var(--heading-color);
+  white-space: nowrap;
+}
+
+/* --- The "Kicker" (Hero Badge) --- */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  background: rgba(15, 61, 87, 0.06);
+  border: 1px solid rgba(15, 61, 87, 0.10);
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+
+.kicker::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent-secondary);
+  box-shadow: 0 0 0 5px rgba(44, 182, 192, 0.18);
+}
+
+/* --- Visual Dividers --- */
+.rule {
+  height: 3px;
+  width: 120px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--accent-primary),
+    var(--accent-secondary)
+  );
+}
+
 /* ===============================
-   5. HEADER / NAV
+   6. SITE MODULES
    =============================== */
 
+/* --- Navigation --- */
 .nav {
   display: flex;
   align-items: center;
@@ -162,10 +260,7 @@ a:hover {
   text-decoration: none;
 }
 
-/* ===============================
-   6. HERO
-   =============================== */
-
+/* --- Hero Section --- */
 .hero {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -173,130 +268,12 @@ a:hover {
   margin-top: 6px;
 }
 
-.kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  font-weight: 700;
-  background: rgba(15, 61, 87, 0.06);
-  border: 1px solid rgba(15, 61, 87, 0.10);
-  padding: 8px 12px;
-  border-radius: 999px;
-}
-
-.kicker::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: var(--accent-secondary);
-  box-shadow: 0 0 0 5px rgba(44, 182, 192, 0.18);
-}
-
-/* ===============================
-   7. BUTTONS
-   =============================== */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
-  border-radius: 14px;
-  font-weight: 800;
-  font-size: 15px;
-  border: 1px solid transparent;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.btn-primary {
-  background: var(--heading-color);
-  color: #ffffff;
-}
-
-.btn-primary:hover {
-  filter: brightness(1.05);
-}
-
-.btn-secondary {
-  background: rgba(15, 23, 42, 0.03);
-  border-color: var(--border);
-  color: var(--body-color);
-}
-
-.btn-secondary:hover {
-  background: rgba(15, 23, 42, 0.05);
-}
-
-/* ===============================
-   Pills / Tags
-   =============================== */
-
-.pill,
-.tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  font-size: 13px;
-  font-weight: 700;
-  border-radius: 999px;
-  background: rgba(15, 61, 87, 0.06);
-  border: 1px solid rgba(15, 61, 87, 0.10);
-  color: var(--heading-color);
-  white-space: nowrap;
-}
-
-/* ===============================
-   Lists
-   =============================== */
-
-ul {
-  padding-left: 18px;
-  margin: 10px 0;
-}
-
-li {
-  margin-bottom: 8px;
-  color: var(--muted);
-  font-weight: 600;
-}
-
-
-/* ===============================
-   8. SECTION STRUCTURE
-   =============================== */
-
+/* --- General Section Headers --- */
 .section-header {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   margin: 22px 0 12px;
-}
-
-.rule {
-  height: 3px;
-  width: 120px;
-  border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    var(--accent-primary),
-    var(--accent-secondary)
-  );
-}
-
-/* ===============================
-   Sections & Content Rhythm
-   =============================== */
-
-section {
-  margin-top: 28px;
-}
-
-section > .card {
-  margin-top: 12px;
 }
 
 .section-title {
@@ -306,11 +283,11 @@ section > .card {
   margin-bottom: 6px;
 }
 
+section > .card {
+  margin-top: 12px;
+}
 
-/* ===============================
-   9. FOOTER
-   =============================== */
-
+/* --- Footer --- */
 .footer {
   margin-top: 22px;
   padding-top: 18px;
@@ -324,9 +301,8 @@ section > .card {
 }
 
 /* ===============================
-   10. RESPONSIVE
+   7. RESPONSIVE
    =============================== */
-
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
