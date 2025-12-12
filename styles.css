@@ -69,7 +69,7 @@ h1 {
 
 h2 {
   font-size: 24px; /* Increased from 20px */
-  text-transform: uppercase;
+  text-transform: kebab-case;
   letter-spacing: 0.05em; /* Adds premium breathing room */
   font-weight: 800;
   margin-bottom: 8px;
@@ -77,7 +77,7 @@ h2 {
 
 h3 {
   font-size: 18px; /* Increased from 16px */
-  text-transform: uppercase;
+  text-transform: kebab-case;
   letter-spacing: 0.04em;
   font-weight: 700;
 }
@@ -506,7 +506,7 @@ section > .card {
 
 .spec-label {
   font-size: 11px;
-  text-transform: uppercase;
+  text-transform: kebab-case;
   letter-spacing: 0.05em;
   color: var(--muted);
   font-weight: 700;
