@@ -447,21 +447,23 @@ section {
 
 .navlinks {
   display: flex;
-  gap: 14px;
-  font-size: 14px;
-  font-weight: 600;
+  gap: 32px; /* Increased space gives a "luxury" feel */
+  align-items: center;
 }
 
 .navlinks a {
-  padding: 8px 10px;
-  border-radius: 10px;
-  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600; /* Semi-bold for legibility */
+  color: var(--muted); /* Soft Grey by default */
+  text-decoration: none; /* REMOVES the underline */
+  background: none; /* REMOVES the grey pill background */
+  padding: 0; /* Removes padding to make it just text */
+  transition: color 0.2s ease;
 }
 
 .navlinks a:hover {
-  background: rgba(15, 23, 42, 0.04);
-  color: var(--body-color);
-  text-decoration: none;
+  color: var(--orange); /* Turns Dark Blue/Black on hover */
+  background: none; /* Ensures no background appears on hover */
 }
 
 /* --- Hero Section --- */
