@@ -212,6 +212,102 @@ section {
   );
 }
 
+/* --- Add these to your styles.css to fix the layout gaps --- */
+
+/* Hero Specifics */
+.hero-main {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-side {
+  padding: 30px;
+  background: var(--paper); /* Subtle contrast */
+}
+
+.subtitle {
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 16px 0 24px;
+  max-width: 500px;
+}
+
+.micro {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 24px;
+  opacity: 0.8;
+}
+
+/* Button Rows */
+.cta-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.badge-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* Grid & Tiles */
+.tile {
+  padding: 24px;
+}
+
+/* Split Cards (Offer, Proof, About) */
+.split-card {
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Contact Card specifics */
+.contact-card {
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Placeholder for screenshot */
+.shot-placeholder {
+  background: #f1f5f9;
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--muted);
+  padding: 20px;
+}
+
+/* Responsive adjustments for the new classes */
+@media (max-width: 768px) {
+  .split-card {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .contact-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 /* ===============================
    6. SITE MODULES
    =============================== */
