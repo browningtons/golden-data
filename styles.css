@@ -416,6 +416,8 @@ section {
 
 /* --- PROOF SECTION UPGRADE --- */
 
+/* --- PROOF SECTION UPGRADE --- */
+
 .proof-card {
   padding: 40px;
   background: #ffffff;
@@ -428,11 +430,13 @@ section {
 
 .proof-header h3 {
   margin-bottom: 12px;
+  color: var(--heading-color);
 }
 
+/* The Asymmetrical Grid: 1 part "Before", 2 parts "After" */
 .proof-grid {
   display: grid;
-  grid-template-columns: 1fr 2fr; /* "Before" gets 1 part, "After" gets 2 parts */
+  grid-template-columns: 1fr 2fr; 
   gap: 40px;
   align-items: start;
 }
@@ -461,26 +465,27 @@ section {
   border: 1px solid rgba(44, 182, 192, 0.2);
 }
 
-/* Image Frames */
+/* "Before" Image Styling (Looks like a document) */
 .before-frame {
   border: 1px solid #E2E8F0;
   background: #fff;
-  padding: 10px; /* Looks like a printed page border */
+  padding: 8px; /* White border like a printed page */
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
   border-radius: 4px;
-  opacity: 0.8; /* Slight fade to make it look "past" */
+  opacity: 0.9; 
 }
 
+/* "After" Image Styling (Looks like software) */
 .after-frame {
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15); /* Stronger "pop" shadow */
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15); /* Deep shadow */
   border: 1px solid rgba(15, 23, 42, 0.05);
   transition: transform 0.3s ease;
 }
 
 .after-frame:hover {
-  transform: scale(1.02); /* Slight zoom on hover */
+  transform: scale(1.02); /* Slight interactive zoom */
 }
 
 .img-responsive {
@@ -497,17 +502,32 @@ section {
   font-weight: 500;
 }
 
+/* The Summary Box at the bottom */
+.why-it-worked {
+  margin-top: 30px;
+  padding: 20px;
+  background: #F8FAFC;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.why-it-worked h4 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .proof-grid {
-    grid-template-columns: 1fr; /* Stack on mobile */
+    grid-template-columns: 1fr; /* Stack vertically on phones */
   }
   
   .before-frame {
-    max-width: 80%; /* Don't make the bad PDF huge on mobile */
+    max-width: 80%; /* Shrink the PDF on mobile so it doesn't take up the whole screen */
   }
 }
-
 /* ===============================
    6. SITE MODULES
    =============================== */
