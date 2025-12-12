@@ -441,8 +441,8 @@ section {
 .brand-name {
   font-weight: 800;
   letter-spacing: -0.02em;
-  font-size: 24px; /* Increased from default */
-  color: var(--heading-color);
+  font-size: 30px; /* Increased from default */
+  color: #000000;
 }
 
 .navlinks {
