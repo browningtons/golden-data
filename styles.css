@@ -1,0 +1,283 @@
+/* =========================================================
+   Golden Data — Design System
+   ========================================================= */
+
+/* ===============================
+   1. DESIGN TOKENS (ALWAYS FIRST)
+   =============================== */
+
+:root {
+  /* --- Core Brand Palette --- */
+  --orange: #F04A00;   /* International Orange (signal) */
+  --blue:   #0F3D57;   /* Pacific Deep Blue (authority) */
+  --teal:   #2CB6C0;   /* Fog Teal (interaction) */
+  --ink:    #0F172A;   /* Ink / Charcoal (body text) */
+  --paper:  #F8FAFC;   /* Paper / Near-White (backgrounds) */
+
+  /* --- Semantic Roles --- */
+  --accent-primary: var(--orange);     /* emphasis, dividers */
+  --accent-secondary: var(--teal);     /* links, pills */
+  --heading-color: var(--blue);        /* headings */
+  --body-color: var(--ink);            /* main text */
+  --surface-color: var(--paper);       /* page background */
+
+  /* --- UI Foundations --- */
+  --bg: var(--surface-color);
+  --card: #ffffff;
+  --text: var(--body-color);
+
+  --muted: rgba(15, 23, 42, 0.72);
+  --border: rgba(15, 23, 42, 0.10);
+
+  --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  --radius: 18px;
+
+  --max-width: 1060px;
+}
+
+/* ===============================
+   2. RESET & GLOBAL BASE STYLES
+   =============================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--body-color);
+  font-family: ui-sans-serif, system-ui, -apple-system,
+               BlinkMacSystemFont, "Segoe UI", Roboto,
+               Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/* ===============================
+   3. TYPOGRAPHY
+   =============================== */
+
+h1, h2, h3 {
+  color: var(--heading-color);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+a {
+  color: var(--accent-secondary);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--heading-color);
+}
+
+/* ===============================
+   4. LAYOUT CONTAINERS
+   =============================== */
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 22px 20px 80px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* ===============================
+   5. HEADER / NAV
+   =============================== */
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0 22px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  height: 34px;
+  width: auto;
+  display: block;
+}
+
+.brand-name {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.navlinks {
+  display: flex;
+  gap: 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.navlinks a {
+  padding: 8px 10px;
+  border-radius: 10px;
+  color: var(--muted);
+}
+
+.navlinks a:hover {
+  background: rgba(15, 23, 42, 0.04);
+  color: var(--body-color);
+  text-decoration: none;
+}
+
+/* ===============================
+   6. HERO
+   =============================== */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 22px;
+  margin-top: 6px;
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  background: rgba(15, 61, 87, 0.06);
+  border: 1px solid rgba(15, 61, 87, 0.10);
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+
+.kicker::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent-secondary);
+  box-shadow: 0 0 0 5px rgba(44, 182, 192, 0.18);
+}
+
+/* ===============================
+   7. BUTTONS
+   =============================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 15px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--heading-color);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.btn-secondary {
+  background: rgba(15, 23, 42, 0.03);
+  border-color: var(--border);
+  color: var(--body-color);
+}
+
+.btn-secondary:hover {
+  background: rgba(15, 23, 42, 0.05);
+}
+
+/* ===============================
+   8. SECTION STRUCTURE
+   =============================== */
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: 22px 0 12px;
+}
+
+.rule {
+  height: 3px;
+  width: 120px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--accent-primary),
+    var(--accent-secondary)
+  );
+}
+
+/* ===============================
+   9. FOOTER
+   =============================== */
+
+.footer {
+  margin-top: 22px;
+  padding-top: 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(15, 23, 42, 0.65);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ===============================
+   10. RESPONSIVE
+   =============================== */
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .navlinks {
+    display: none;
+  }
+}
