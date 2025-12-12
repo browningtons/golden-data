@@ -231,6 +231,41 @@ a:hover {
 }
 
 /* ===============================
+   Pills / Tags
+   =============================== */
+
+.pill,
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 999px;
+  background: rgba(15, 61, 87, 0.06);
+  border: 1px solid rgba(15, 61, 87, 0.10);
+  color: var(--heading-color);
+  white-space: nowrap;
+}
+
+/* ===============================
+   Lists
+   =============================== */
+
+ul {
+  padding-left: 18px;
+  margin: 10px 0;
+}
+
+li {
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+
+/* ===============================
    8. SECTION STRUCTURE
    =============================== */
 
@@ -251,6 +286,26 @@ a:hover {
     var(--accent-secondary)
   );
 }
+
+/* ===============================
+   Sections & Content Rhythm
+   =============================== */
+
+section {
+  margin-top: 28px;
+}
+
+section > .card {
+  margin-top: 12px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--heading-color);
+  margin-bottom: 6px;
+}
+
 
 /* ===============================
    9. FOOTER
