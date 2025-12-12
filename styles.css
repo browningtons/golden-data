@@ -123,6 +123,31 @@ section {
   margin-top: 28px;
 }
 
+/* A distinct look for the Value Card */
+.value-card {
+  background: #F0F9FA; /* A very light tint of your Teal color */
+  border-color: rgba(44, 182, 192, 0.2); /* Subtle teal border */
+  padding: 32px; /* More breathing room */
+}
+
+.side-title {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 800;
+  color: var(--heading-color);
+  margin-bottom: 18px;
+  border-bottom: 2px solid rgba(0,0,0,0.05);
+  padding-bottom: 10px;
+}
+
+/* Add breathing room to the list items in this specific card */
+.value-list li {
+  margin-bottom: 14px;
+  font-weight: 600;
+  color: var(--blue);
+}
+
 /* ===============================
    5. COMPONENTS (Reusable UI)
    =============================== */
@@ -364,6 +389,16 @@ section {
   opacity: 0.8;
 }
 
+.eyebrow {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em; /* Spreads letters out for a premium feel */
+  font-weight: 800;
+  color: var(--orange); /* Uses your brand accent color */
+  margin-bottom: 16px;
+  display: block;
+}
+
 /* Forces the container into 3 columns */
 .grid-3 {
   display: grid;
@@ -398,7 +433,7 @@ section {
 }
 
 .logo {
-  height: 34px;
+  height: 40px;
   width: auto;
   display: block;
 }
@@ -406,6 +441,8 @@ section {
 .brand-name {
   font-weight: 800;
   letter-spacing: -0.02em;
+  font-size: 24px; /* Increased from default */
+  color: var(--heading-color);
 }
 
 .navlinks {
