@@ -361,6 +361,21 @@ section {
   opacity: 0.8;
 }
 
+/* Forces the container into 3 columns */
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* This creates the 3 columns */
+  gap: 20px; /* Space between cards */
+  width: 100%;
+}
+
+/* OPTIONAL: Keeps them stacked on mobile phones so they don't get too squished */
+@media (max-width: 768px) {
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ===============================
    6. SITE MODULES
    =============================== */
