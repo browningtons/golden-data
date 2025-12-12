@@ -7,25 +7,43 @@
   <title>Golden Data — Decision-Ready Clarity</title>
 
   <style>
-    :root{
-      /* Golden Data brand palette */
-      --orange: #F04A00;
-      --blue:   #0F3D57;
-      --teal:   #2CB6C0;
-      --ink:    #0F172A;
-      --paper:  #F8FAFC;
-
-      --bg: var(--paper);
-      --card: #ffffff;
-      --text: var(--ink);
-      --muted: rgba(15, 23, 42, 0.72);
-      --border: rgba(15, 23, 42, 0.10);
-
-      --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
-      --radius: 18px;
-
-      --max: 1060px;
-    }
+  :root{
+    /* =========================================================
+       Golden Data — Core Brand Palette
+       ========================================================= */
+  
+    --orange: #F04A00;   /* International Orange (signal) */
+    --blue:   #0F3D57;   /* Pacific Deep Blue (authority) */
+    --teal:   #2CB6C0;   /* Fog Teal (interaction) */
+    --ink:    #0F172A;   /* Ink / Charcoal (body text) */
+    --paper:  #F8FAFC;   /* Paper / Near-White (backgrounds) */
+  
+    /* =========================================================
+       Semantic Roles (what the colors MEAN)
+       ========================================================= */
+  
+    --accent-primary: var(--orange);     /* emphasis, dividers, highlights */
+    --accent-secondary: var(--teal);     /* links, pills, secondary cues */
+    --heading-color: var(--blue);        /* headings, authority text */
+    --body-color: var(--ink);            /* default body text */
+    --surface-color: var(--paper);       /* page background */
+  
+    /* =========================================================
+       UI Foundations
+       ========================================================= */
+  
+    --bg: var(--surface-color);
+    --card: #ffffff;
+    --text: var(--body-color);
+  
+    --muted: rgba(15, 23, 42, 0.72);      /* secondary text */
+    --border: rgba(15, 23, 42, 0.10);     /* card & divider borders */
+  
+    --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    --radius: 18px;
+  
+    --max: 1060px;
+  }
 
     *{ box-sizing: border-box; }
     html, body{ height: 100%; }
