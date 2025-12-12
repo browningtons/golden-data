@@ -441,7 +441,7 @@ section {
 .brand-name {
   font-weight: 800;
   letter-spacing: -0.02em;
-  font-size: 30px; /* Increased from default */
+  font-size: 20px; /* Increased from default */
   color: #000000;
 }
 
