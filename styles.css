@@ -479,3 +479,98 @@ section > .card {
     display: none;
   }
 }
+
+/* --- Core Offer Improvements --- */
+
+.offer-desc {
+  font-size: 16px;
+  margin-bottom: 24px;
+  max-width: 400px;
+}
+
+/* The "Specs" Box (Timeline/Outcome) */
+.offer-specs {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(15, 61, 87, 0.04);
+  border: 1px solid rgba(15, 61, 87, 0.1);
+  border-radius: 12px;
+  padding: 12px 20px;
+  gap: 20px;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.spec-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.spec-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.spec-divider {
+  width: 1px;
+  height: 30px;
+  background: rgba(0,0,0,0.1);
+}
+
+/* The Lists (You Bring vs You Get) */
+.offer-details {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.list-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.text-muted { color: var(--muted); }
+.text-primary { color: var(--orange); } /* Highlights "You Get" */
+
+/* Remove default bullets for custom lists */
+ul.list-check, ul.list-bullet {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.list-check li, ul.list-bullet li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+/* Standard Bullet */
+ul.list-bullet li::before {
+  content: "•";
+  color: var(--muted);
+  position: absolute;
+  left: 0;
+  font-size: 1.2em;
+  line-height: 1;
+}
+
+/* Checkmark Icon for "You Get" */
+ul.list-check li::before {
+  content: "✓";
+  color: var(--accent-secondary); /* Teal Checkmark */
+  position: absolute;
+  left: 0;
+  font-weight: 900;
+}
