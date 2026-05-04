@@ -1,0 +1,15 @@
+title: Golden Data
+description: Golden Data ships the AI feature that makes the next step in your app obvious. Production code, evaluated, in two to three weeks.
+url: https://browningtons.github.io
+baseurl: /golden-data
+
+# Markdown
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+
+# Files Jekyll should NOT copy to the built site
+exclude:
+  - README.md
+  - GD Invoice Example.pdf
+  - prompts

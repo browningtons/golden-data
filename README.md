@@ -1,184 +1,101 @@
-# Golden Data — How I Work
+# Golden Data
 
-**Turning institutional chaos into decision-ready clarity.**
+**Make the complex obvious.**
 
-Golden Data exists to help teams make better decisions with data — not by adding more dashboards, but by building clear, repeatable analytics systems leaders can trust.
+Golden Data ships the AI feature that makes the next step in your app obvious — designed against your real users, evaluated against real failure modes, handed off as production code in your codebase. Two to three weeks.
 
-This repository documents **how I work**, not a product or a pitch.
+Built for SaaS founders and CTOs adding AI features to data-heavy products: sales operations tools, ad tech platforms, analytics platforms, BI products, and the modern data stack.
 
----
-
-## What I Optimize For
-
-**Decisions first**  
-Every engagement starts with a real business decision and the KPI(s) that inform it.
-
-**Clarity over volume**  
-If a dashboard doesn’t change behavior, it’s noise.
-
-**Speed with quality**  
-Conclusive answers, protected guardrails, and on-time delivery.
-
-**Human-in-the-loop**  
-I draft. Your team reviews. Nothing ships without alignment.
-
-**Reproducibility**  
-Every claim links back to data, queries, or code. Results can be rerun.
-
-**Low drama**  
-Clear scope, clear cadence, clear ownership.
+**Live site:** [browningtons.github.io/golden-data](https://browningtons.github.io/golden-data/)
 
 ---
 
-## The Engagement Model
+## How I work
 
-Most analytics failures happen *before* the first query is written.  
-This is the flow I use to prevent that.
+This is the operating manual under the hood of every engagement.
 
-Decision → KPI → Guardrails → Data → Build → Review → Readout → Insight → Monitor
+### Principles
 
+**Decisions first.** Every engagement starts with a real user decision the AI feature is supposed to support, and the metric that says whether it's working.
 
----
+**Clarity over volume.** If a feature doesn't change how the user behaves, it's noise. One feature shipped well beats three half-shipped.
 
-### 1. Define the Decision
+**Speed with quality.** Conclusive answers, eval coverage, latency budgets, cost caps, on-time delivery. Boring is the goal.
 
-- What choice is someone actually trying to make?
-- Who owns it?
-- What does success look like?
+**Human-in-the-loop.** I draft. Your team reviews. Nothing ships without alignment.
 
-If the decision isn’t clear, we stop here.
+**Reproducibility.** Every prompt, every eval golden example, every cost number lives in your repo. Results can be rerun.
 
----
+**Low drama.** Clear scope, clear cadence, clear ownership.
 
-### 2. Lock the Metrics
+### Engagement flow
 
-- Primary KPI (explicit definition)
-- Secondary metrics (context, not distractions)
-- Guardrails (what must not break)
+User moment → Spec → Eval setup → Build → Latency/cost validation → Handoff
 
-No vague metrics. No retroactive redefinitions.
+1. **User moment.** What's the user about to do? Where does an AI feature change the next step?
+2. **Spec.** One feature. Decision-first. The shape (RAG, agent, retrieval+ranking, etc.) and the constraints (latency, cost, accuracy, scale).
+3. **Eval setup.** 50–100 golden examples before any production code is written. Without this, you're shipping vibes.
+4. **Build.** In your codebase, in your stack. Latency budget, cost cap, observability — built in, not bolted on.
+5. **Latency/cost validation.** Verify against the budget you signed off on. Tune until it holds.
+6. **Handoff.** Working feature. Eval harness. Cost monitor. A short doc explaining what was shipped and why.
 
----
-
-### 3. Validate Inputs
-
-- Data sources identified
-- Tracking verified
-- Access confirmed
-- Assumptions documented
-
-If the data can’t support the decision, that’s surfaced early.
+The shape is a 2–3 week **Clarity Sprint**. Pricing on the intro call.
 
 ---
 
-### 4. Build (Lean and Focused)
+## Who's behind it
 
-Depending on the problem:
-- Dashboard
-- Experiment analysis
-- Metric framework
-- One-off decision memo
+Paul Brown — currently leading sales operations at a social media ad tech platform. Background in analytics engineering, senior data analyst leadership, and BI strategy. Roles I've held or operated alongside: Staff/Principal Analytics Engineer, Senior/Staff Data Analyst, Product Analytics Manager, BI/Analytics Director, Fintech/Compliance Analytics.
 
-The goal is **action**, not elegance.
+The features I build for clients are the ones I see my own teams actually need. I'm credible in the spaces I work in: sales ops, ad tech, analytics tooling, BI, the modern data stack. Outside those, I'll tell you I'm not the right person.
 
 ---
 
-### 5. Review Before Release
+## Signal — the weekly newsletter
 
-- Stakeholders review drafts
-- Edge cases surfaced
-- Interpretation aligned
+[Signal](https://browningtons.github.io/golden-data/signal/) is a weekly read for SaaS founders and CTOs adding AI features to data-heavy products — and the senior analytics ICs and BI leaders who use those products every day.
 
-This prevents surprises later.
+- **Cadence:** Sunday morning, weekly.
+- **Length:** 700–1,000 words.
+- **Voice:** First-person practitioner. Specific. Technical. Anti-noise.
+- **Structure:** Diagnostic lede → what's shipping this week → what I'd ship in your app this week → CTA.
 
----
+### How it's automated
 
-### 6. Readout and Recommendation
+A scheduled task (`signal-weekly` in `~/.claude/scheduled-tasks/`) runs every Sunday at 7 AM local. It:
 
-Every readout includes:
-- TL;DR decision
-- What changed (absolute and relative)
-- Confidence level and risks
-- Clear recommendation
-
-Not “here’s the data.”  
-Here’s **what to do**.
+1. Fetches [`prompts/signal-prompt.md`](prompts/signal-prompt.md) (the source of truth for audience, voice, structure, quality bar).
+2. Researches the past 7–14 days of AI feature signals via web search.
+3. Writes the issue as `signal/YYYY-MM-DD.md` with frontmatter using the `issue` Jekyll layout.
+4. Updates `signal/index.html` — adds the issue to the list, repoints the hero CTA.
+5. Opens a PR. Paul reviews and merges manually.
 
 ---
 
-### 7. Capture the Insight
+## Repo structure
 
-Wins, losses, and inconclusive results are documented:
-- What worked
-- What didn’t
-- When this applies again
+```
+golden-data/
+├── README.md                  ← you are here
+├── _config.yml                ← Jekyll config (baseurl, excludes)
+├── _layouts/
+│   ├── default.html           ← head + nav + footer chrome
+│   └── issue.html             ← extends default; wraps issue body + CTA card
+├── index.html                 ← homepage (standalone HTML, copied as-is)
+├── styles.css                 ← shared design system
+├── assets/                    ← logo, favicons, case-study images
+├── signal/                    ← weekly newsletter
+│   ├── index.html             ← Signal landing page (uses default layout)
+│   └── YYYY-MM-DD.md          ← weekly issues (use issue layout)
+└── prompts/
+    └── signal-prompt.md       ← the prompt the weekly task fetches
+```
 
-This compounds value over time.
-
----
-
-### 8. Monitor What Matters
-
-If a metric drives decisions, it gets monitored.  
-If it doesn’t, it gets retired.
-
----
-
-## Communication Rhythm
-
-- **Daily:** async updates (Slack or email)
-- **Weekly:** priorities, risks, blockers
-- **Friday update:**
-  - What launched
-  - What read out
-  - What’s next
-
-No black boxes. No bloated status decks.
+GitHub Pages serves from the repo root with Jekyll. The site is available at `/golden-data/` until a custom domain is wired up.
 
 ---
 
-## Typical Deliverables
+## Contact
 
-- Decision briefs
-- KPI definitions and governance docs
-- Dashboards (Power BI, Looker, Tableau)
-- Experiment charters and readouts
-- Monitoring and guardrail plans
-- Clear handoff documentation
-
----
-
-## Who This Is For
-
-- Product leaders tired of dashboard sprawl
-- Executives who want answers, not charts
-- Analytics teams that need structure without bureaucracy
-
-If you’ve ever said *“we have the data, but…”* — this work is for you.
-
----
-
-## What This Repo Is (and Isn’t)
-
-**This is:**
-- A public explanation of how I approach analytics work
-- A signal of how engagements are run
-
-**This is not:**
-- A sales page
-- A SaaS product
-- A consulting funnel
-
----
-
-## About
-
-Golden Data is operated by **Paul Brown**, a senior analytics leader focused on building and stabilizing reporting, experimentation, and decision systems for high-growth teams.
-
----
-
-### Status
-
-This repository is intentionally minimal.  
-Clarity beats completeness.
-
+Email: [thegoldendata@gmail.com](mailto:thegoldendata@gmail.com)
+[Book a clarity call](https://calendar.app.google/nAaLqm8NWS2mXdT49)
