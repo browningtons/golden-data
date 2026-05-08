@@ -3,125 +3,101 @@ layout: default
 title: Signal
 description: Signal — a weekly newsletter about AI features that actually ship in B2B SaaS. Sales ops, ad tech, analytics, BI. Sunday mornings.
 ---
-<div class="signal-header">
-  <div class="card" style="padding: 48px;">
-    <p class="eyebrow">Signal — Weekly</p>
+<div class="card" style="padding: 40px;">
+  <p class="eyebrow">Signal — Weekly</p>
 
-    <h1>AI features that actually ship</h1>
-    <p class="subtitle">
-      Every Sunday I look at what shipped in B2B SaaS — sales ops, ad tech, analytics, BI — and
-      write up what's working, what's bolted on, and one concrete feature I'd build this week.
-      700–1,000 words. No fluff.
-    </p>
+  <h1 style="margin-bottom: 12px;">AI features that actually ship</h1>
+  <p class="subtitle" style="margin-bottom: 20px;">
+    Every Sunday I look at what shipped in B2B SaaS — sales ops, ad tech, analytics, BI — and
+    write up what's working, what's bolted on, and one concrete feature I'd build this week.
+    700–1,000 words. No fluff.
+  </p>
 
-    <a class="btn btn-primary" href="2026-05-03.html">
-      Read the latest issue <span aria-hidden="true">→</span>
-    </a>
+  <a class="btn btn-primary" href="2026-05-03.html">
+    Read the latest issue <span aria-hidden="true">→</span>
+  </a>
 
-    <div class="micro">
-      Written by Paul Brown · Drafted with Claude · Edited and shipped by a human.
-    </div>
-  </div>
+  <p class="micro">
+    Written by Paul Brown · Drafted with Claude · Edited and shipped by a human.
+  </p>
 </div>
 
-<section id="issues">
-  <div class="section-header">
-    <h2>Archive</h2>
-    <div class="rule" aria-hidden="true"></div>
-  </div>
+<div class="card" style="padding: 28px; margin-top: 16px;">
+  <p style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 800; color: var(--heading-color); margin-bottom: 14px;">Archive</p>
+  <ul style="padding: 0; list-style: none; margin: 0;">
+    <li>
+      <strong style="color: var(--heading-color);">May 3, 2026 — Issue #1</strong> ·
+      <a href="2026-05-03.html">Most AI features feel bolted on. Here's what ships when they don't.</a>
+    </li>
+  </ul>
+</div>
 
-  <div class="card" style="padding: 28px;">
-    <ul style="padding: 0; list-style: none; margin: 0;">
-      <li>
-        <strong style="color: var(--heading-color);">May 3, 2026 — Issue #1</strong> ·
-        <a href="2026-05-03.html">Most AI features feel bolted on. Here's what ships when they don't.</a>
-      </li>
-    </ul>
-  </div>
-</section>
+<div class="card" style="padding: 28px; margin-top: 16px;">
+  <p style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 800; color: var(--heading-color); margin-bottom: 14px;">About</p>
+  <p>
+    I'm Paul Brown — I lead sales operations at a social media ad tech platform and spend my nights
+    building AI-powered tools in the analytics and BI space. Signal is where I write about what I'm
+    seeing and what I'd ship. Drafted with Claude, edited and shipped by a human.
+    If something I write about is close to a problem you're working on,
+    <a href="{{ '/' | relative_url }}#contact">I'm happy to talk</a>.
+  </p>
+</div>
 
-<section id="about-signal">
-  <div class="section-header">
-    <h2>About</h2>
-    <div class="rule" aria-hidden="true"></div>
-  </div>
+<div class="card" style="padding: 28px; margin-top: 16px;">
+  <details class="signal-routine">
+    <summary>How it's made — view the full prompt Claude receives each week</summary>
+    <div class="routine-content">
 
-  <div class="card" style="padding: 32px;">
-    <p>
-      I'm Paul Brown — I lead sales operations at a social media ad tech platform and spend my nights
-      building AI-powered tools in the analytics and BI space. Signal is where I write about what I'm
-      seeing and what I'd ship. Drafted with Claude, edited and shipped by a human.
-    </p>
-    <p style="margin-top: 16px;">
-      If something I write about is close to a problem you're working on,
-      <a href="{{ '/' | relative_url }}#contact">I'm happy to talk</a>.
-    </p>
-  </div>
-</section>
+      <h3>Audience</h3>
+      <p>Two overlapping groups:</p>
+      <ol>
+        <li><strong>Buyers</strong> — SaaS founders, CTOs, and heads of product at companies building tools for sales operations, ad tech, analytics, BI, and the modern data stack. Technical, busy, skeptical of AI hype, and have likely shipped at least one AI feature already and watched it underperform.</li>
+        <li><strong>Advocates / influencers</strong> — senior analytics ICs and leaders who use those tools every day and quietly steer purchasing decisions: Staff/Principal Analytics Engineers, Senior/Staff Data Analysts, Product Analytics Managers, BI/Analytics Directors, and fintech / compliance-focused analytics leads.</li>
+      </ol>
 
-<section id="how-its-made">
-  <div class="section-header">
-    <h2>How it's made</h2>
-    <div class="rule" aria-hidden="true"></div>
-  </div>
+      <h3>Brand voice</h3>
+      <p>Calm. Anti-noise. Decision-first. Plain language with sharp opinions.</p>
+      <ul>
+        <li>No "AI is changing everything" preambles.</li>
+        <li>No breathless framing of routine product launches.</li>
+        <li>Assume the reader is smart and short on time.</li>
+        <li>Each issue should make them think differently about one specific thing.</li>
+        <li>Quote real numbers, real benchmarks, real product launches. If you can't, say so.</li>
+      </ul>
+      <p>Voice anchor: Paul writes Signal as a senior practitioner inside the buyer's world — direct, slightly skeptical, generous with concrete advice.</p>
 
-  <div class="card" style="padding: 32px;">
-    <p style="margin-bottom: 16px;">
-      Each issue is drafted by Claude against a structured prompt, then edited and shipped by a human.
-      The full prompt is below — this is exactly what the AI sees before writing each issue.
-    </p>
+      <h3>Topic priorities</h3>
+      <ul>
+        <li><strong>Sales ops AI</strong> — CRM intelligence, deal coaching, forecasting, attribution, dashboards, rep enablement</li>
+        <li><strong>Ad tech AI</strong> — advertiser dashboards, campaign optimization, anomaly detection, audience insights, creative analysis</li>
+        <li><strong>Analytics platforms</strong> — Hex, Mode, Looker, Tableau, dbt, semantic layer products</li>
+        <li><strong>BI tools</strong> — Power BI Copilot, Tableau Pulse / Agent, Looker AI, Superset, ThoughtSpot</li>
+        <li><strong>Modern data stack</strong> — Snowflake, Databricks, Microsoft Fabric, dbt, Looker — and what their AI moves mean for daily users</li>
+        <li><strong>The senior IC lens</strong> — what a Staff Analytics Engineer or BI Director actually wants from an AI feature, vs. what gets shipped</li>
+      </ul>
 
-    <details class="signal-routine">
-      <summary>View the full prompt Claude receives each week</summary>
-      <div class="routine-content">
+      <h3>Structure (4 sections per issue)</h3>
 
-        <p>You are my analytics career newsletter editor. Each week, write a concise, high-value newsletter based on these core target roles:</p>
-        <ul>
-          <li>Staff / Principal Analytics Engineer</li>
-          <li>Senior / Staff Data Analyst</li>
-          <li>Product Analytics Manager</li>
-          <li>BI / Data Analytics Leadership (Director, Head of Analytics)</li>
-          <li>Fintech or Compliance-Focused Analytics Roles</li>
-        </ul>
+      <h4>1. The diagnostic (~150 words)</h4>
+      <p>A sharp observation about AI features in B2B SaaS. What's happening that most people see but don't talk about? No throat-clearing.</p>
 
-        <h3>Before drafting — learn from prior issues</h3>
-        <p>Query the issue database, sorted by Issue Date desc, and pull the last 3–4 issues. From each, read:</p>
-        <ul>
-          <li><strong>Edited Version</strong> — Paul's actual edits. This is the strongest voice signal you have. If he consistently shortens intros, start shorter. If he kills a recurring phrase, kill it.</li>
-          <li><strong>Feedback</strong> — open editorial questions and pattern notes. Resolve them in this issue or carry them forward explicitly.</li>
-          <li><strong>Headlines / Tags</strong> — what's already been covered. Do NOT re-pitch the same headline. If a story is still moving, find the new angle.</li>
-          <li><strong>Voice Score</strong> — track the trend. If it's drifting down, name what changed in your Feedback note for this issue.</li>
-          <li><strong>Status</strong> — only Approved or Published issues count as voice anchors. Drafts and Archived are noise.</li>
-        </ul>
-        <p>If there are no prior issues (cold start), proceed without this step and note it in Feedback.</p>
+      <h4>2. What's actually shipping (~250 words)</h4>
+      <p>3–5 real signals from the last 7–14 days. What shipped, why it matters, what to take from it. Real launches, real benchmarks. Skip pure funding announcements.</p>
 
-        <h3>Voice cast (locked until Paul recasts)</h3>
-        <ul>
-          <li><strong>Primary</strong>: Sam Harris (dry) — precise, data-respecting, occasionally cutting. Default register for the whole letter.</li>
-          <li><strong>Supporting</strong>: Hitchens — for the sharpening / "you're lying to yourself" lines. Use sparingly: one or two per issue, on the lines that need to land hard.</li>
-          <li><strong>Never</strong>: Reynolds-Bateman, Mr. Meseeks, Timmy. Wrong audience.</li>
-          <li><strong>House style</strong> — no LinkedIn-speak (leverage / synergy / empower / journey / unlock), no exclamation points, no false cheer, earn the period. Aim for 6+ instances of the "X. Y." telltale shape per issue.</li>
-        </ul>
+      <h4>3. What I'd ship this week (~300 words)</h4>
+      <p>1–2 concrete AI features, written first-person. For each: the user moment, the shape (RAG, agent, single-call, etc.), the latency budget, cost-per-call ceiling, eval shape, and what success looks like 2 weeks post-launch. Shippable by a small team in 2–3 weeks.</p>
 
-        <h3>Structure (3 sections)</h3>
+      <h4>4. Closing (~80 words)</h4>
+      <p>If the reader's working on something similar, here's how to get in touch.</p>
 
-        <h4>1. Career Snapshot</h4>
-        <p>Summarize the analytics job market for senior IC and leadership roles. Highlight salary trends, top hiring companies, and common skills required. Call out which roles are especially hot or competitive this week.</p>
+      <h3>Quality bar</h3>
+      <ul>
+        <li>Does the lede make a reader stop scrolling?</li>
+        <li>Are the signals from the past 7–14 days, or padding with evergreen?</li>
+        <li>Could the reader take action on Monday from section 3?</li>
+        <li>Any sentence I'd cut for being filler? Cut it.</li>
+      </ul>
 
-        <h4>2. Tech &amp; Market Trends</h4>
-        <p>Curate 3–5 headlines about Snowflake, Databricks, Power BI/Fabric, dbt, analytics engineering, or BI leadership. Include a brief insight on how each trend relates to these roles (portfolio ideas, interview talking points).</p>
-
-        <h4>3. Next Action Plan</h4>
-        <ul>
-          <li>One portfolio or resume enhancement idea aligned with these roles.</li>
-          <li>One networking or outreach action (e.g., a LinkedIn post idea, conversation starter).</li>
-          <li>A 7-day micro-skill focus (e.g., dbt semantic layer, Fabric Copilot, cost optimization in Snowflake).</li>
-        </ul>
-
-        <h3>After filing</h3>
-        <p>End with a one-paragraph summary: what you covered, what you avoided (and why — usually because a prior issue covered it), what changed in voice or format from last week, and the open feedback items Paul should weigh in on.</p>
-
-      </div>
-    </details>
-  </div>
-</section>
+    </div>
+  </details>
+</div>
