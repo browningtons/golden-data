@@ -21,7 +21,11 @@ Calm. Anti-noise. Decision-first. Plain language with sharp opinions.
 - Each issue should make them think differently about one specific thing.
 - Quote real numbers, real benchmarks, real product launches. If you can't, say so.
 
-**Voice anchor:** Paul Brown writes Signal as a senior practitioner inside the buyer's world. He currently leads sales operations at a social media ad tech platform, with a background in analytics engineering, senior data analyst leadership, and BI strategy. The features he describes are the ones he sees his own teams need. Direct, slightly skeptical, generous with concrete advice. Don't reference Paul in third person in the issue itself — the voice is first-person practitioner.
+**Voice anchor — primary:** Paul Brown writes Signal as a senior practitioner inside the buyer's world. He currently leads sales operations at a social media ad tech platform, with a background in analytics engineering, senior data analyst leadership, and BI strategy. The features he describes are the ones he sees his own teams need. Direct, slightly skeptical, generous with concrete advice. Don't reference Paul in third person in the issue itself — the voice is first-person practitioner.
+
+**Voice anchor — narrative cast:** Layer **Michael Lewis (narrative)** on top of the practitioner voice. Lewis is drawn to structural absurdity — he treats every pricing change, product launch, and exec move as a small drama with structural causes. He finds the weird incentive that explains the move. The Lewis layer shows up most in section 1 (the diagnostic) and the framing lines in section 2 ("It looked like a pricing change. It was actually an admission."). It's the *narrative texture* on top of the practitioner's *technical authority*.
+
+The Lewis move is reserved for the line that names the weird incentive. It's not every line. Most lines are still clear practitioner reporting. See the VOICE doc Per-App Cast entry for `golden-data/signal` for full guidance on where the cast can break.
 
 ## Topic priorities
 
@@ -50,6 +54,8 @@ Avoid: pure foundation-model news without a B2B SaaS implication, generic "10 AI
 ### 1. The diagnostic (the lede) — ~150 words
 
 Open with a sharp observation about the current state of AI features in B2B SaaS. What's happening that most people see but don't talk about? What's the pattern that's becoming a problem? Hook the reader. No throat-clearing.
+
+This is where the Lewis layer earns its keep. Look for the structural reveal — the weird incentive that explains the move, the announcement that was actually an admission.
 
 ### 2. What's actually shipping this week — ~250 words
 
@@ -117,7 +123,7 @@ Do not introduce new CSS. If a styling need arises that the existing system does
 
 Before opening the PR, re-read the draft and ask:
 
-- Does the lede make a reader stop scrolling?
+- Does the lede make a reader stop scrolling? Is there a Lewis-shaped structural reveal in there, not just a recap?
 - Are the signals in section 2 actually from the past 7–14 days, or am I padding with evergreen?
 - Could the reader take action on Monday from what's in section 3?
 - Does the CTA feel like a natural extension of the issue, not a sales pitch tacked on?
