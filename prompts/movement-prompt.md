@@ -89,9 +89,9 @@ These should be the kind of move a senior IC could actually finish between meeti
 
 One paragraph framed inside an orange-tinted callout card (matches Signal's CTA visual treatment for sibling consistency).
 
-The CTA invites the reader into Paul's longer-form personal philosophy work. The framing is "Movement covers the market. The longer pieces cover what to do with a career once the market stops being the answer." Reference the longer pieces in the abstract — career trajectory, work-meaning, IFS, Camus, the move from optimization to authorship — without overselling. End with a "Book a clarity call" button linking to `https://calendar.app.google/nAaLqm8NWS2mXdT49` and a "Read the longer pieces" secondary button linking to `../#offer` (placeholder until a Substack URL is provided — the link will be updated when the longer-pieces destination is confirmed).
+The CTA invites the reader to keep reading Movement and to reach out if something landed. End with a "Read past issues" button linking to `../#archive` (the archive section of `movement/index.html`) and a "Book a clarity call" secondary button linking to `https://calendar.app.google/nAaLqm8NWS2mXdT49`.
 
-When a Substack URL exists, replace the secondary button link with that URL and reframe the CTA copy to invite subscription explicitly.
+The clarity-call button is intentionally secondary, not primary — Movement's job is to be useful, not to sell. Most weeks no reader will book; that's fine.
 
 ## Frontmatter template
 
