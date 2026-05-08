@@ -727,3 +727,75 @@ ul.list-check li::before {
   left: 0;
   font-weight: 900;
 }
+
+/* --- Signal Routine (Expandable) --- */
+.signal-routine summary {
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-secondary);
+  padding: 12px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.signal-routine summary::-webkit-details-marker {
+  display: none;
+}
+
+.signal-routine summary::before {
+  content: "▸";
+  font-size: 13px;
+  transition: transform 0.2s ease;
+}
+
+.signal-routine[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.signal-routine summary:hover {
+  color: var(--heading-color);
+}
+
+.routine-content {
+  padding: 24px 0 8px;
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+}
+
+.routine-content h3 {
+  font-size: 16px;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.routine-content h3:first-child {
+  margin-top: 0;
+}
+
+.routine-content h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-top: 16px;
+  margin-bottom: 6px;
+}
+
+.routine-content p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.routine-content ul,
+.routine-content ol {
+  font-size: 14px;
+  padding-left: 20px;
+}
+
+.routine-content li {
+  font-size: 14px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
