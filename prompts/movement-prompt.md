@@ -115,26 +115,70 @@ For lists with custom spacing or component classes (e.g. `list-bullet`), drop in
 
 Do not introduce new CSS. If a styling need arises that the existing system doesn't cover, use a minimal inline style.
 
-## After writing
+## Routine flow
 
-1. Update `movement/index.html` to add the new issue to the top of the archive list, in this format (inside the `<ul>` inside the archive card):
+Each weekly run is a **4-phase routine**. Run the phases in order. Notion is the source of truth for content and feedback; the repo is the publishing target.
 
-   ```html
-   <li style="margin-bottom: 14px;">
-     <strong style="color: var(--heading-color);">MMMM D, YYYY — Issue #N</strong> ·
-     <a href="YYYY-MM-DD.html">Issue headline</a>
-   </li>
-   ```
+**Notion DB:** `https://www.notion.so/8b61ee12da3745f2b12a31566f6e4b39` (data source `a3ab8f53-afa0-4b46-bfef-15b37f61f003`)
 
-   Note: link to `YYYY-MM-DD.html` even though the source file is `YYYY-MM-DD.md` — Jekyll renders markdown to HTML, and the URL ends in `.html`.
+### Phase 1 — Publish (sweep approved drafts to the repo)
 
-2. Update the "Read the latest issue" button on `movement/index.html` (the primary CTA in the hero) to point at the new file (`YYYY-MM-DD.html`).
+Before drafting anything new, check Notion for drafts ready to ship.
 
-3. Open a PR titled `Movement: Issue #N (YYYY-MM-DD)` against the `golden-data` repo.
+**Filter:** `Newsletter = Movement` AND `Status = Approved`
+**Sort:** `Issue Date` ascending (oldest first, in case multiple are queued)
 
-## Quality bar
+For each Approved row:
 
-Before opening the PR, re-read the draft and ask:
+1. Read the row's `Edited Version` field. If it's empty, fall back to the page body.
+2. Compute the next `issue_number` by scanning `movement/*.md` for the highest existing value and incrementing by 1. If the folder has no issues yet, this is `issue_number: 1`.
+3. Build the markdown frontmatter:
+   - `layout: issue`
+   - `title:` — extract the headline from the Notion `Title` property by stripping the `"Movement — Week of <date>: "` prefix
+   - `description:` — derive from the first 1–2 sentences of the body
+   - `date:` — the Notion `Issue Date` property in `YYYY-MM-DD` format
+   - `issue_number:` — the value computed in step 2
+4. Write the file to `movement/YYYY-MM-DD.md` (date matches `Issue Date`).
+5. Update `movement/index.html`:
+   - Prepend a new `<li>` to the archive `<ul>` (format documented under "Archive list entry format" below). On the first publish, also remove the placeholder `<li>` that says "Issue #1 lands soon."
+   - Update the hero CTA `href` to point at the new `YYYY-MM-DD.html`.
+6. Commit and push directly to `main` with message `"Movement: Issue #N (YYYY-MM-DD)"`. Approved content does not require a PR.
+7. Update the Notion row:
+   - `Status` → `Published`
+   - Add the live URL to the page (e.g. `https://browningtons.github.io/golden-data/movement/YYYY-MM-DD.html`) — set the `userDefined:URL` page property if one exists, otherwise drop the URL into the page body as the first line.
+
+If no Approved rows exist, skip Phase 1 entirely.
+
+### Phase 2 — Learn (read prior issues for active directives)
+
+Query Notion for recent issues to learn from.
+
+**Filter:** `Newsletter = Movement` AND `Status ∈ {Approved, Published}`
+**Sort:** `Created` descending
+**Limit:** 5 most recent
+
+For each row, read fields in this priority order. **Earlier signals carry higher weight.**
+
+1. **`Note to next draft`** — Paul's explicit one-line directive. Treat as an active rule for the new issue. Don't paraphrase; follow.
+2. **`Editorial Notes`** — Paul's editorial reactions. Pattern-match what landed and what dragged. Replicate what landed; avoid what dragged.
+3. **`Edited Version` vs. body** — diff the two. Where Edited Version differs, that's the rewrite signal:
+   - Lines or sections cut entirely → filler signal
+   - Lines tightened → overwriting signal
+   - Sections expanded → underdeveloping signal
+4. **`Voice Pass`** — `On` rows are positive examples; `Off` rows are negative; `Mixed` is partial.
+5. **`Voice Score`** — finer-grained version of the same weighting.
+6. **`Reception`** — when filled in, the only true output signal. Prefer learnings from rows with strong reception.
+7. **`Feedback`** — your own prior run notes. Read the open-questions sections — if a previous run flagged a question for Paul, check whether his subsequent edits answered it.
+
+If the filter returns zero rows (no Movement issue has been Approved or Published yet), seed the learning loop from Signal instead: pull the same 5-row window with `Newsletter = Signal` and read for *house-style cues only* — voice cadence, the "X. Y." telltale shape, the Quality-bar discipline. Do not borrow Signal's content lens; Movement's audience and topic priorities are different.
+
+### Phase 3 — Draft
+
+Web search for fresh signals from the past 7–14 days. Apply the structure, voice, and topic priorities documented above, weighted by the directives from Phase 2. Write the new draft.
+
+Before moving to Phase 4, run the **Quality bar** check below. If any answer fails, revise before writing to Notion.
+
+#### Quality bar
 
 - Does the lede make a senior IC stop scrolling? Did Hitchens earn his line, or is it forced?
 - Are the signals in section 2 actually from the past 7–14 days, or am I padding with evergreen career advice?
@@ -143,4 +187,46 @@ Before opening the PR, re-read the draft and ask:
 - Is there any sentence I would cut for being filler? Cut it.
 - Is there any line that drifted into LinkedIn-speak or false cheer? Rewrite it.
 
-If yes/yes/yes/no/no/no, ship.
+If yes/yes/yes/no/no/no, proceed to Phase 4.
+
+### Phase 4 — Write the new draft to Notion (NOT to the repo)
+
+Create a new page in the GD Newsletter DB with these properties:
+
+| Property | Value |
+|---|---|
+| `Title` | `Movement — Week of <date>: <headline>.` |
+| `Newsletter` | `Movement` |
+| `Status` | `Draft` |
+| `Cast` | Primary cast for this issue (`Sam Harris (dry)` for the default register; `Hitchens` only if the issue's signature line genuinely earns it) |
+| `Section` | `Full Issue` |
+| `Tags` | All applicable tags |
+| `Issue Date` | This week's intended publish date |
+| `Voice Score` | Self-rated 1–10 |
+| `Word Count` | Word count of the body |
+| `Source Links` | The single most-cited URL (full source list lives in the body) |
+| `Feedback` | Run notes — cadence observations, voice cast notes, open questions for Paul, prior-issue questions resolved this week |
+
+Page body: the full markdown of the issue, exactly as it would appear at `movement/YYYY-MM-DD.md` after publish, including a trailing voice-notes section that mirrors Signal's existing pattern (cast, telltale shape count, LinkedIn-speak audit, exclamation-point count, open questions for Paul).
+
+**Do not commit anything to the repo for the new draft.** The new draft only reaches the repo in Phase 1 of the next week's run, after Paul has reviewed and Approved it.
+
+Leave these fields blank — they are Paul's to fill in during review:
+- `Voice Pass`
+- `Editorial Notes`
+- `Note to next draft`
+- `Edited Version`
+- `Reception`
+
+### Archive list entry format
+
+When updating `movement/index.html` in Phase 1, the new `<li>` goes inside the `<ul>` in the archive card. Format:
+
+```html
+<li style="margin-bottom: 14px;">
+  <strong style="color: var(--heading-color);">MMMM D, YYYY — Issue #N</strong> ·
+  <a href="YYYY-MM-DD.html">Issue headline</a>
+</li>
+```
+
+Note: link to `YYYY-MM-DD.html` even though the source file is `YYYY-MM-DD.md` — Jekyll renders markdown to HTML.
