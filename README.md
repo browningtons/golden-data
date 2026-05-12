@@ -57,21 +57,21 @@ Two weekly letters share this repo, the same Jekyll layout, and the same Notion-
 
 [**Signal**](https://browningtons.github.io/golden-data/signal/) is for SaaS founders and CTOs adding AI features to data-heavy products — and the senior analytics ICs and BI leaders who use those products every day.
 
-- **Voice cast:** Michael Lewis (narrative) layered on Paul-as-practitioner.
+- **Voice cast:** Michael Lewis (narrative). The expertise is Paul's; Lewis is the persona.
 - **Structure:** Diagnostic lede → what's shipping this week → what I'd ship in your app this week → CTA.
 
-[**Movement**](https://browningtons.github.io/golden-data/movement/) is for senior analytics ICs and leaders actively managing their careers.
+[**Crafting**](https://browningtons.github.io/golden-data/crafting/) is for senior analytics ICs and leaders actively crafting their next career move.
 
-- **Voice cast:** Sam Harris (dry) primary, Hitchens supporting.
+- **Voice cast:** Reynolds-meets-Bateman. Fourth-wall winks under dry deadpan.
 - **Structure:** Diagnostic lede → what's actually moving in the market → what I'd do this week → CTA.
 
 Both letters: 700–1,000 words, no fluff, weekly cadence.
 
 ### How they're automated
 
-A scheduled task fetches the relevant prompt ([`prompts/signal-prompt.md`](prompts/signal-prompt.md) or [`prompts/movement-prompt.md`](prompts/movement-prompt.md)) and runs the **4-phase routine** documented inside it:
+A scheduled task fetches the relevant prompt ([`prompts/signal-prompt.md`](prompts/signal-prompt.md) or [`prompts/crafting-prompt.md`](prompts/crafting-prompt.md)) and runs the **5-phase routine** documented inside it:
 
-1. **Publish.** Sweep the unified Notion DB for any rows where `Newsletter = X` and `Status = Approved`. Commit each to `signal/` or `movement/` and push to `main` (no PR for content drafts).
+1. **Publish.** Sweep the unified Notion DB for any rows where `Newsletter = X` and `Status = Approved`. Commit each to `signal/` or `crafting/` and open a PR titled `<Newsletter>: Issue #N (YYYY-MM-DD)` against `main` (direct push to `main` is blocked by branch protection).
 2. **Learn.** Read the 5 most recent Approved/Published rows. Highest-weight signal is the `Note to next draft` field; supporting signals are `Editorial Notes`, the `Edited Version` diff, `Voice Pass`, `Voice Score`, and `Reception`.
 3. **Draft.** Web search for live signals from the past 7–14 days. Apply structure, voice, and topic priorities, weighted by what was learned.
 4. **Write to Notion.** Create a new row in the GD Newsletter DB with `Status = Draft` and the full markdown in the page body. Paul reviews and approves in Notion; the next week's run publishes it.
@@ -95,12 +95,12 @@ golden-data/
 ├── signal/                     ← Signal newsletter
 │   ├── index.html              ← Signal landing page (uses default layout)
 │   └── YYYY-MM-DD.md           ← weekly issues (use issue layout)
-├── movement/                   ← Movement newsletter
-│   ├── index.html              ← Movement landing page
+├── crafting/                   ← Crafting newsletter
+│   ├── index.html              ← Crafting landing page
 │   └── YYYY-MM-DD.md           ← weekly issues
 └── prompts/
     ├── signal-prompt.md        ← Signal routine + voice + structure
-    └── movement-prompt.md      ← Movement routine + voice + structure
+    └── crafting-prompt.md      ← Crafting routine + voice + structure
 ```
 
 GitHub Pages serves from the repo root with Jekyll. The site is available at `/golden-data/` until a custom domain is wired up.
