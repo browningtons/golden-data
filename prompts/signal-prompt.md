@@ -46,17 +46,6 @@ Each week, lean into one or more of these spaces. These are the domains Paul has
 
 **Avoid:** pure foundation-model news without a B2B SaaS implication, generic "10 AI tools to try" lists, anything that reads like a press release, pure VC funding announcements (unless the deal shape itself is the signal), recap-of-recaps content.
 
-## Before drafting — learn from prior issues
-
-Before writing a word, list the files in `signal/*.md` (excluding `index.html`), pick the **last 3–4 issues by date**, and read them. From each, note:
-
-- **Headlines and topics covered.** Do not re-pitch the same headline. If a story is still moving (e.g. ongoing Snowflake AI rollout, an evolving Power BI Copilot story), find the *new* angle — what changed in the last 7 days.
-- **Voice patterns.** What sentence shapes recur? What openings does Paul use? Where does the rhythm work, and where does it sag? Match what works.
-- **Open questions in the PR body.** If a prior issue's PR body flagged an editorial question or ambiguity, address it in this issue or carry it forward explicitly in the new PR body.
-- **Voice Score trend.** Each prior PR body has a self-assessed Voice Score (1–10). If the trend is drifting down, name what's changed and what you're doing differently this week.
-
-If there are no prior issues (cold start), proceed without this step and note it in the PR body.
-
 ## Output requirements
 
 - **Format:** Markdown file with YAML frontmatter at `signal/YYYY-MM-DD.md`. The Jekyll `issue` layout handles the head/nav/footer chrome, the eyebrow, the H1, the trailing CTA card, and the "← All issues" footer line. Your job is the body content only.
@@ -120,10 +109,9 @@ For lists with custom spacing or component classes (e.g. `list-bullet`), drop in
 
 Do not introduce new CSS. If a styling need arises that the existing system doesn't cover, use a minimal inline style.
 
-## After writing
+## Routine flow
 
 Each weekly run is a **5-phase routine**. Run the phases in order. Notion is the source of truth for content and feedback; the repo is the publishing target.
-
 
 ### Status ownership
 
@@ -136,11 +124,12 @@ All other transitions (`Draft → In Review → Approved → Decline`) are Paul'
 
 ### Phase 1 — Publish (sweep approved drafts to the repo)
 
+Before drafting anything new, check Notion for drafts ready to ship.
 
 **Filter:** `Newsletter = Signal` AND `Status = Approved`
 **Sort:** `Publish Date` ascending (oldest first, in case multiple are queued)
 
-2. Update the "Read the latest issue" button on `signal/index.html` (the primary CTA in the hero) to point at the new file (`YYYY-MM-DD.html`).
+For each Approved row:
 
 1. Read the row's `Edited Version` field. If it's empty, fall back to the page body.
 2. Compute the next `issue_number` by scanning `signal/*.md` for the highest existing value and incrementing by 1.
@@ -168,8 +157,6 @@ All other transitions (`Draft → In Review → Approved → Decline`) are Paul'
      **Published:** https://browningtons.github.io/golden-data/signal/YYYY-MM-DD.html
      ```
 
-## PR body — required structure
-
 ### Phase 2 — Archive (sweep declined drafts and learn from them)
 
 Decline carries as strong a signal as Approve — it just points the other way. Sweep declined drafts before drafting anything new.
@@ -190,13 +177,7 @@ If no Declined rows exist, skip Phase 2 entirely.
 
 ### Phase 3 — Learn (read prior issues for active directives)
 
-- **Headline** — the title of the issue.
-- **One-paragraph summary** — what this issue covers.
-- **3 bullets** — the specific signals or features covered.
-- **What I avoided and why** — usually because a prior issue covered it. Name the prior issue and the angle you considered but rejected.
-- **What changed in voice or format from last week** — anything different in rhythm, opening, structure, or section emphasis.
-- **Voice Score (1–10)** — your honest self-assessment against the voice discipline rules above. Not a marketing number. If it's a 6, say 6, and say why.
-- **Open editorial questions** — anything you weren't sure about. Word choice, structural call, whether a signal was strong enough to include. Paul will weigh in on the merge.
+Query Notion for recent issues to learn from.
 
 **Filter:** `Newsletter = Signal` AND `Status ∈ {Approved, Published, Archived}`
 **Sort:** `Created` descending
@@ -225,14 +206,14 @@ Before moving to Phase 5, run the **Quality bar** check below. If any answer fai
 
 #### Quality bar
 
-- Does the lede make a reader stop scrolling? Is there a Lewis-shaped structural reveal in there, not just a recap?
+- Does the lede make a reader stop scrolling?
 - Are the signals in section 2 actually from the past 7–14 days, or am I padding with evergreen?
 - Could the reader take action on Monday from what's in section 3?
 - Does the CTA feel like a natural extension of the issue, not a sales pitch tacked on?
 - Did I hit 6+ "X. Y." short-declarative shapes? Did I avoid every banned word?
 - Is there any sentence I would cut for being filler? Cut it.
 
-If yes/yes/yes/yes/no, proceed to Phase 5.
+If yes/yes/yes/yes/yes/no, proceed to Phase 5.
 
 ### Phase 5 — Write the new draft to Notion (NOT to the repo)
 
