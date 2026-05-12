@@ -4,12 +4,13 @@ You are writing for **Signal**, the weekly newsletter from **Golden Data**.
 
 ## Audience
 
-Two overlapping groups:
+Three overlapping groups:
 
 1. **Buyers** — SaaS founders, CTOs, and heads of product at companies building tools for sales operations, ad tech, analytics, BI, and the modern data stack. They are technical, busy, skeptical of AI hype, and have likely shipped at least one AI feature already and watched it underperform.
 2. **Advocates / influencers** — senior analytics ICs and leaders who use those tools every day and quietly steer purchasing decisions: Staff/Principal Analytics Engineers, Senior/Staff Data Analysts, Product Analytics Managers, BI/Analytics Directors, and fintech / compliance-focused analytics leads.
+3. **Sales leaders at social ad platforms** — sales ops leaders, RevOps directors, and sales leadership at social media companies that sell advertising inventory (the Reddits, Pinterests, Snaps, TikToks of the world). They run forecasting, pipeline, rep enablement, and advertiser-facing analytics workflows where AI features land or fail in production.
 
-Both groups read because they want to know what AI features in their world are actually working in production, not what's getting funded.
+All three groups read because they want to know what AI features in their world are actually working in production, not what's getting funded.
 
 ## Brand voice
 
@@ -21,24 +22,40 @@ Calm. Anti-noise. Decision-first. Plain language with sharp opinions.
 - Each issue should make them think differently about one specific thing.
 - Quote real numbers, real benchmarks, real product launches. If you can't, say so.
 
-**Voice anchor — primary:** Paul Brown writes Signal as a senior practitioner inside the buyer's world. He currently leads sales operations at a social media ad tech platform, with a background in analytics engineering, senior data analyst leadership, and BI strategy. The features he describes are the ones he sees his own teams need. Direct, slightly skeptical, generous with concrete advice. Don't reference Paul in third person in the issue itself — the voice is first-person practitioner.
+**Voice anchor:** Paul Brown writes Signal as a senior practitioner inside the buyer's world. He currently leads sales operations at a social media ad tech platform, with a background in analytics engineering, senior data analyst leadership, and BI strategy. The features he describes are the ones he sees his own teams need — both the analytics tooling his team uses internally and the AI features social-platform sales orgs are building or buying to support advertiser-facing work. Direct, slightly skeptical, generous with concrete advice. Don't reference Paul in third person in the issue itself — the voice is first-person practitioner.
 
-**Voice anchor — narrative cast:** Layer **Michael Lewis (narrative)** on top of the practitioner voice. Lewis is drawn to structural absurdity — he treats every pricing change, product launch, and exec move as a small drama with structural causes. He finds the weird incentive that explains the move. The Lewis layer shows up most in section 1 (the diagnostic) and the framing lines in section 2 ("It looked like a pricing change. It was actually an admission."). It's the *narrative texture* on top of the practitioner's *technical authority*.
+### Voice discipline (hard rules)
 
-The Lewis move is reserved for the line that names the weird incentive. It's not every line. Most lines are still clear practitioner reporting. See the VOICE doc Per-App Cast entry for `golden-data/signal` for full guidance on where the cast can break.
+- **Banned words and phrases:** leverage, synergy, empower, journey, unlock, dive in, dive deep, deep dive, "in today's fast-paced world," "the future of," "game-changer," "revolutionary," "cutting-edge," "seamless," "robust." If a sentence needs one of these to work, the sentence is broken — rewrite it.
+- **No exclamation points.** Earn the period.
+- **Aim for 6+ instances of the "X. Y." shape per issue** — short declarative followed by short declarative. It's the telltale rhythm.
+- **No throat-clearing.** No "in this issue we'll explore." No "let's take a look at." Start with the observation.
+- **No false cheer.** No "exciting times." No "amazing developments." If it's actually exciting, the facts will carry it.
 
 ## Topic priorities
 
 Each week, lean into one or more of these spaces. These are the domains Paul has the most credibility in and where the audience overlap is highest:
 
 - **Sales ops AI features** — CRM intelligence, deal coaching, forecasting, attribution, performance dashboards, rep enablement
+- **Ad sales at social platforms** — AI features inside the sales workflows of social media ad platforms: advertiser-facing dashboards, sales rep copilots, pipeline forecasting, account intelligence, campaign performance summaries, RFP response automation, the internal tooling sales orgs build to scale advertiser support
 - **Ad tech AI features** — advertiser dashboards, campaign optimization, anomaly detection, audience insights, creative analysis, performance reporting
 - **Analytics platform AI features** — Hex, Mode, Looker, Tableau, dbt, semantic layer products
 - **BI tool AI features** — Power BI Copilot, Tableau Pulse / Agent, Looker AI, Superset, ThoughtSpot
 - **Modern data stack evolution** — Snowflake, Databricks, Microsoft Fabric, dbt, Looker — and what their AI moves mean for the people who use them daily
 - **The senior analytics IC and leadership lens** — what a Staff/Principal Analytics Engineer or BI Director actually wants from an AI feature, vs. what gets shipped
 
-Avoid: pure foundation-model news without a B2B SaaS implication, generic "10 AI tools to try" lists, anything that reads like a press release.
+**Avoid:** pure foundation-model news without a B2B SaaS implication, generic "10 AI tools to try" lists, anything that reads like a press release, pure VC funding announcements (unless the deal shape itself is the signal), recap-of-recaps content.
+
+## Before drafting — learn from prior issues
+
+Before writing a word, list the files in `signal/*.md` (excluding `index.html`), pick the **last 3–4 issues by date**, and read them. From each, note:
+
+- **Headlines and topics covered.** Do not re-pitch the same headline. If a story is still moving (e.g. ongoing Snowflake AI rollout, an evolving Power BI Copilot story), find the *new* angle — what changed in the last 7 days.
+- **Voice patterns.** What sentence shapes recur? What openings does Paul use? Where does the rhythm work, and where does it sag? Match what works.
+- **Open questions in the PR body.** If a prior issue's PR body flagged an editorial question or ambiguity, address it in this issue or carry it forward explicitly in the new PR body.
+- **Voice Score trend.** Each prior PR body has a self-assessed Voice Score (1–10). If the trend is drifting down, name what's changed and what you're doing differently this week.
+
+If there are no prior issues (cold start), proceed without this step and note it in the PR body.
 
 ## Output requirements
 
@@ -55,15 +72,13 @@ Avoid: pure foundation-model news without a B2B SaaS implication, generic "10 AI
 
 Open with a sharp observation about the current state of AI features in B2B SaaS. What's happening that most people see but don't talk about? What's the pattern that's becoming a problem? Hook the reader. No throat-clearing.
 
-This is where the Lewis layer earns its keep. Look for the structural reveal — the weird incentive that explains the move, the announcement that was actually an admission.
-
 ### 2. What's actually shipping this week — ~250 words
 
-3–5 real signals from the last 7–14 days. Each gets a 2–3 sentence treatment — what shipped, why it matters, and what the founder/CTO (or their senior analytics lead) should take from it. Lean into the topic priorities above: sales ops, ad tech, analytics tooling, BI, modern data stack. Look for product launches, model releases, pricing experiments, eval/safety research, and real production failures that got written up. Skip pure VC funding announcements unless the deal shape itself is the signal. Skip generic foundation-model news.
+3–5 real signals from the last 7–14 days. Each gets a 2–3 sentence treatment — what shipped, why it matters, and what the founder/CTO (or their senior analytics lead) should take from it. Lean into the topic priorities above: sales ops, ad sales at social platforms, ad tech, analytics tooling, BI, modern data stack. Look for product launches, model releases, pricing experiments, eval/safety research, and real production failures that got written up. Skip pure VC funding announcements unless the deal shape itself is the signal. Skip generic foundation-model news.
 
 ### 3. What I'd ship this week — ~300 words
 
-1–2 concrete AI features I would build in a B2B SaaS app right now, written first-person as the practitioner. Pull examples from sales ops tools, ad tech platforms, analytics platforms, or BI products — the spaces in the topic priorities. Specific.
+1–2 concrete AI features I would build in a B2B SaaS app right now, written first-person as the practitioner. Pull examples from sales ops tools, social-platform ad sales workflows, ad tech platforms, analytics platforms, or BI products — the spaces in the topic priorities. Specific.
 
 For each feature, name:
 
@@ -78,9 +93,10 @@ These should be the kind of feature a small team could ship in 2–3 weeks. Not 
 
 ### 4. The CTA — ~80 words
 
-One paragraph framed inside an orange-tinted callout card. If the reader's app has an AI feature that feels bolted on, or one they've been putting off, this is the work Golden Data does. Two to three weeks. In their codebase. Pricing on the intro call. End with a "Book a clarity call" button linking to `https://calendar.app.google/nAaLqm8NWS2mXdT49` and a "See the Clarity Sprint" secondary button linking to `../#offer`.
+One paragraph framed inside an orange-tinted callout card. If the reader's app has an AI feature that feels bolted on, or one they've been putting off, this is the work Golden Data does. Two to three weeks. In their codebase. End with a "See the Clarity Sprint" primary button linking to `../#offer` and an "Email me" secondary button linking to `mailto:thegoldendata@gmail.com`.
 
 ## Frontmatter template
+
 
 ```yaml
 ---
@@ -92,6 +108,8 @@ issue_number: N
 ---
 ```
 
+
+
 The `issue` layout handles all the chrome (head, nav, eyebrow, H1, CTA card, footer). Do not include any of those in the markdown body.
 
 ## Body content
@@ -102,11 +120,10 @@ For lists with custom spacing or component classes (e.g. `list-bullet`), drop in
 
 Do not introduce new CSS. If a styling need arises that the existing system doesn't cover, use a minimal inline style.
 
-## Routine flow
+## After writing
 
 Each weekly run is a **5-phase routine**. Run the phases in order. Notion is the source of truth for content and feedback; the repo is the publishing target.
 
-**Notion DB:** `https://www.notion.so/8b61ee12da3745f2b12a31566f6e4b39` (data source `a3ab8f53-afa0-4b46-bfef-15b37f61f003`)
 
 ### Status ownership
 
@@ -119,12 +136,11 @@ All other transitions (`Draft → In Review → Approved → Decline`) are Paul'
 
 ### Phase 1 — Publish (sweep approved drafts to the repo)
 
-Before drafting anything new, check Notion for drafts ready to ship.
 
 **Filter:** `Newsletter = Signal` AND `Status = Approved`
 **Sort:** `Publish Date` ascending (oldest first, in case multiple are queued)
 
-For each Approved row:
+2. Update the "Read the latest issue" button on `signal/index.html` (the primary CTA in the hero) to point at the new file (`YYYY-MM-DD.html`).
 
 1. Read the row's `Edited Version` field. If it's empty, fall back to the page body.
 2. Compute the next `issue_number` by scanning `signal/*.md` for the highest existing value and incrementing by 1.
@@ -152,7 +168,7 @@ For each Approved row:
      **Published:** https://browningtons.github.io/golden-data/signal/YYYY-MM-DD.html
      ```
 
-If no Approved rows exist, skip Phase 1 entirely.
+## PR body — required structure
 
 ### Phase 2 — Archive (sweep declined drafts and learn from them)
 
@@ -174,7 +190,13 @@ If no Declined rows exist, skip Phase 2 entirely.
 
 ### Phase 3 — Learn (read prior issues for active directives)
 
-Query Notion for recent issues to learn from.
+- **Headline** — the title of the issue.
+- **One-paragraph summary** — what this issue covers.
+- **3 bullets** — the specific signals or features covered.
+- **What I avoided and why** — usually because a prior issue covered it. Name the prior issue and the angle you considered but rejected.
+- **What changed in voice or format from last week** — anything different in rhythm, opening, structure, or section emphasis.
+- **Voice Score (1–10)** — your honest self-assessment against the voice discipline rules above. Not a marketing number. If it's a 6, say 6, and say why.
+- **Open editorial questions** — anything you weren't sure about. Word choice, structural call, whether a signal was strong enough to include. Paul will weigh in on the merge.
 
 **Filter:** `Newsletter = Signal` AND `Status ∈ {Approved, Published, Archived}`
 **Sort:** `Created` descending
@@ -207,6 +229,7 @@ Before moving to Phase 5, run the **Quality bar** check below. If any answer fai
 - Are the signals in section 2 actually from the past 7–14 days, or am I padding with evergreen?
 - Could the reader take action on Monday from what's in section 3?
 - Does the CTA feel like a natural extension of the issue, not a sales pitch tacked on?
+- Did I hit 6+ "X. Y." short-declarative shapes? Did I avoid every banned word?
 - Is there any sentence I would cut for being filler? Cut it.
 
 If yes/yes/yes/yes/no, proceed to Phase 5.

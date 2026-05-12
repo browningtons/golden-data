@@ -1,6 +1,26 @@
 /* =========================================================
    Golden Data — Design System
+   See DESIGN.md at repo root for the field guide.
    ========================================================= */
+
+/* ===============================
+   0. FONTS (self-hosted, variable WOFF2)
+   =============================== */
+@font-face {
+  font-family: "Geist";
+  src: url("assets/fonts/Geist-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("assets/fonts/GeistMono-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* ===============================
    1. DESIGN TOKENS
@@ -32,6 +52,18 @@
   --radius: 18px;
 
   --max-width: 1060px;
+
+  /* --- Typography --- */
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", monospace;
+
+  /* Type scale (spine six-step). Use freely; existing rules use bespoke sizes by design. */
+  --text-xs:      12px;   /* metadata, captions */
+  --text-sm:      14px;   /* secondary body */
+  --text-base:    16px;   /* body */
+  --text-lg:      20px;   /* h3, card titles */
+  --text-xl:      28px;   /* h2, section heads */
+  --text-display: 48px;   /* reserved for primary outcomes */
 }
 
 /* ===============================
@@ -49,7 +81,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--body-color);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-sans);
   line-height: 1.5;
 }
 
@@ -194,6 +226,24 @@ section {
 
 .btn-secondary:hover {
   background: rgba(15, 23, 42, 0.05);
+}
+
+.btn-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  color: var(--accent-secondary);
+}
+
+.footer-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+
+.footer-social:hover {
+  color: var(--accent-secondary);
 }
 
 /* --- Pills / Tags --- */
@@ -360,11 +410,11 @@ section {
 }
 
 .step-num {
-  font-family: monospace;
+  font-family: var(--font-mono);
   font-size: 14px;
   font-weight: 700;
   /* Switch from Teal to Orange */
-  color: var(--orange); 
+  color: var(--orange);
   background: rgba(240, 74, 0, 0.1); /* 10% opacity Orange */
   padding: 4px 8px;
   border-radius: 6px;
@@ -486,6 +536,13 @@ section {
 
 .after-frame:hover {
   transform: scale(1.02); /* Slight interactive zoom */
+}
+
+.after-frame-link {
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 
 .img-responsive {
