@@ -40,7 +40,7 @@ These hold across every app in the portfolio. The palette and persona change. Th
 | **Three questions** | _Have they actually done this?_ · _What's the deliverable, concretely?_ · _What does it cost me to find out?_ |
 | **What makes it sing** | The reader is treated as a peer ("I won't waste your time"), not a lead. "Boring is the goal." "No chatbot in the corner." |
 | **Tradeoffs locked in** | Static Jekyll site, no JS framework. No analytics. No live chat. CTA is email — friction is the filter. |
-| **Status** | Tier 2 shipped — tokens + typography (Geist Sans, Geist Mono) wired in [`styles.css`](styles.css). Tiers 3–4 pending; see Tier Menu below. |
+| **Status** | Tier 3 shipped — tokens, typography, full 5-state component coverage, focus rings, semantic status tokens. Tier 4 (dark mode) pending. |
 
 ---
 
@@ -51,18 +51,18 @@ Defined in [`styles.css`](styles.css) `:root` block. Consumed via CSS variables.
 | Token | Current value | Spine slot | Notes |
 |---|---|---|---|
 | `--paper` | `#F8FAFC` | `--background` | Cool-neutral override of the spine's warm-off-white. See Decision Log. |
-| `--card-bg` | `#FFFFFF` | `--surface-raised` | Pure white card surface — soft violation of the no-pure-white rule; acceptable on a research/operator surface. Worth revisiting in Tier 3. |
+| `--card-bg` | `#FFFFFF` | `--surface-raised` | Pure white card surface — intentional per-app override; printed-page feel for the operator/research register (Stripe Press does the same). |
 | `--blue` | `#0F3D57` | `--primary` | Pacific Deep Blue. Passes "no generic blue" — has conviction. |
 | `--orange` | `#F04A00` | `--accent` | International Orange. Warm, decisive CTA. |
-| `--teal` | `#2CB6C0` | _no exact spine slot_ | Documented as "interaction color" — links, pills, data-viz accent. Acts as a soft secondary accent. |
+| `--teal` | `#2CB6C0` | _no exact spine slot_ | "Interaction color" — links, pills, data-viz accent, and aliased to `--focus`. |
 | `--ink` | `#0F172A` | `--text` | Dark charcoal, not pure black. ✓ |
 | `--muted` | `rgba(15,23,42,0.72)` | `--text-muted` | ✓ |
-| `--success` | _not defined_ | `--success` | Gap — add in Tier 3 if any status UI appears. |
-| `--warning` | _not defined_ | `--warning` | Gap. |
-| `--error` | _not defined_ | `--error` | Gap. |
-| `--focus` | _not defined_ | `--focus` | Gap — browser default focus ring only. Address in Tier 3. |
+| `--success` | `#2D6A4F` | `--success` | Warm forest, not Slack green. ✓ |
+| `--warning` | `#A8541C` | `--warning` | Sienna, not yellow. ✓ |
+| `--error` | `#9F2D2D` | `--error` | Brick red. ✓ |
+| `--focus` | `var(--teal)` | `--focus` | Aliased to Fog Teal — already the interaction color; pops against orange + blue without competing. ✓ |
 
-Spine variants (`*-soft`) are not yet defined as tokens; they appear inline (e.g., `rgba(240, 74, 0, 0.1)` on `.step-num`). Worth consolidating in Tier 3.
+Soft variants defined and consumed throughout: `--orange-soft`, `--blue-soft`, `--blue-border`, `--teal-soft`, `--teal-halo` (focus halo), plus `--success-soft` / `--warning-soft` / `--error-soft`. Inline `rgba()` literals in components have been consolidated to these tokens.
 
 ---
 
@@ -134,9 +134,9 @@ The site's voice (this doc) and the newsletter voices coexist by audience: site 
 The following come from the canonical Field Guide and are not relitigated here. See [debt-snowball-dolphin/DESIGN.md](https://github.com/browningtons/debt-snowball-dolphin/blob/main/DESIGN.md) for the full text:
 
 - **Spacing.** Multiples of 4 or 8. No nested cards.
-- **State coverage.** Buttons define 5 states (default, hover, active, disabled, focus); inputs define 5 (default, hover, focus, disabled, error). Focus rings always visible. ⚠️ _Gap — see Tier 3._
+- **State coverage.** Buttons define 5 states (default, hover, active, disabled, focus); inputs define 5 (default, hover, focus, disabled, error). Focus rings always visible. ✅ _Shipped Tier 3 — see [`styles.css`](styles.css)._
 - **Light + dark.** Hand-tuned, never mechanically inverted. ⚠️ _Gap — dark mode not wired. See Tier 4._
-- **Accessibility floor.** WCAG AA contrast, no color-alone status, action-oriented button labels.
+- **Accessibility floor.** WCAG AA contrast, no color-alone status, action-oriented button labels. ✅ _Focus rings wired via `:focus-visible` on all tabbable elements; status colors are not color-alone (paired with copy/icons by convention)._
 
 **N/A on this stack** (Jekyll + plain CSS):
 - shadcn alias mapping
@@ -153,7 +153,7 @@ The current state is **Tier 1 — Tokens.** Pick from the menu below; each tier 
 | Tier | Scope | Why pick it |
 |---|---|---|
 | ~~**Tier 2 — Typography**~~ | ✅ Shipped 2026-05-11. Geist Sans + Geist Mono self-hosted in [`assets/fonts/`](assets/fonts); six-step scale exposed as `--text-*` tokens in `:root`. | — |
-| **Tier 3 — Components & a11y** | Define formal 5-state button + input coverage. Add `--focus` ring token and apply across all interactive elements. Add `--success` / `--warning` / `--error` tokens for any future status UI. Replace the pure-white `--card-bg` with a faint warm tint or document the override as intentional. | Closes the accessibility floor and the state-coverage spine rule. |
+| ~~**Tier 3 — Components & a11y**~~ | ✅ Shipped 2026-05-11. Buttons: default/hover/active/disabled/focus. Inputs: default/hover/focus/disabled/error (base ruleset, no inputs on the surface today). `--focus` aliased to Fog Teal; `:focus-visible` ring on every tabbable element. Semantic `--success` / `--warning` / `--error` tokens added with soft variants. Inline `rgba()` consolidated into soft-tint tokens. Pure-white `--card-bg` documented as intentional. | — |
 | **Tier 4 — Dark mode** | Add `data-theme="dark"` toggle on `<html>`. Hand-tune a dark palette (`--paper` → calm dark charcoal, `--ink` → warm off-white, `--blue` brighter, `--orange` slightly lightened). Persist preference; default to system. | Useful for newsletter issue pages especially — long-form reading in low light. |
 
 None of these are required. Pick by appetite.
@@ -170,6 +170,9 @@ None of these are required. Pick by appetite.
 | 2026-05-11 | Background `#F8FAFC` overrides the spine's warm-off-white default | This is a research/operator surface for CTOs, not a financial-stress surface. Cool-neutral white reads correctly for the reference vibes (Stripe Press / Patrick McKenzie / FT). Warm off-white would push toward "lifestyle blog." Spine principle preserved, hex value adapted to the persona. |
 | 2026-05-11 | Skip React-stack spine rules (shadcn, Tailwind v4 `@theme inline`, Lucide, `ThemeProvider`) | The repo is Jekyll + plain CSS. Spine *principles* port; *implementation rules* would be cargo. |
 | 2026-05-11 | Tier 2 — Adopt Geist Sans + Geist Mono, skip Satoshi | Geist Sans with `letter-spacing: -0.02em` lands the operator/research register without a third font load. Self-hosted variable WOFF2 (latin subset, ~60KB total). |
+| 2026-05-11 | Tier 3 — `--focus` aliased to `--teal` (Fog Teal) | Already the interaction color; pops against the orange CTA and blue text without introducing a fourth color. Spine asks for "visible + calm, usually a lighter primary" — Fog Teal lands the same brief. |
+| 2026-05-11 | Tier 3 — Keep `--card-bg` pure white as a per-app override | Operator/research register (Stripe Press, FT) reads correctly on pure-white card surfaces. Warm-tint cards would push toward "lifestyle blog." Spine rule preserved on body background (`--paper`); card override documented. |
+| 2026-05-11 | Tier 3 — Button focus uses `box-shadow` halo; everything else uses `outline` | Outline on a rounded button clips visibly at the corners; `box-shadow: 0 0 0 3px var(--teal-halo)` wraps cleanly. All other tabbables use the modern accessible default of `outline: 2px solid var(--focus); outline-offset: 2px`. |
 
 ---
 
