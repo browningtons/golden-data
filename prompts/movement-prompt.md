@@ -89,9 +89,9 @@ These should be the kind of move a senior IC could actually finish between meeti
 
 One paragraph framed inside an orange-tinted callout card (matches Signal's CTA visual treatment for sibling consistency).
 
-The CTA invites the reader to keep reading Movement and to reach out if something landed. End with a "Read past issues" button linking to `../#archive` (the archive section of `movement/index.html`) and a "Book a clarity call" secondary button linking to `https://calendar.app.google/nAaLqm8NWS2mXdT49`.
+The CTA invites the reader to keep reading Movement and to reach out if something landed. End with a "Read past issues" button linking to `../#archive` (the archive section of `movement/index.html`) and an "Email me" secondary button linking to `mailto:thegoldendata@gmail.com`.
 
-The clarity-call button is intentionally secondary, not primary — Movement's job is to be useful, not to sell. Most weeks no reader will book; that's fine.
+Movement's job is to be useful, not to sell. The secondary CTA is intentionally low-pressure — most weeks no reader will reach out, and that's fine.
 
 ## Frontmatter template
 

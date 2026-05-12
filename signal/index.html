@@ -49,11 +49,13 @@ description: Signal — a weekly newsletter about AI features that actually ship
     <div class="routine-content">
 
       <h3>Audience</h3>
-      <p>Two overlapping groups:</p>
+      <p>Three overlapping groups:</p>
       <ol>
         <li><strong>Buyers</strong> — SaaS founders, CTOs, and heads of product at companies building tools for sales operations, ad tech, analytics, BI, and the modern data stack. Technical, busy, skeptical of AI hype, and have likely shipped at least one AI feature already and watched it underperform.</li>
         <li><strong>Advocates / influencers</strong> — senior analytics ICs and leaders who use those tools every day and quietly steer purchasing decisions: Staff/Principal Analytics Engineers, Senior/Staff Data Analysts, Product Analytics Managers, BI/Analytics Directors, and fintech / compliance-focused analytics leads.</li>
+        <li><strong>Sales leaders at social ad platforms</strong> — sales ops leaders, RevOps directors, and sales leadership at social media companies that sell advertising inventory (the Reddits, Pinterests, Snaps, TikToks of the world). They run forecasting, pipeline, rep enablement, and advertiser-facing analytics workflows where AI features land or fail in production.</li>
       </ol>
+      <p>All three groups read because they want to know what AI features in their world are actually working in production, not what's getting funded.</p>
 
       <h3>Brand voice</h3>
       <p>Calm. Anti-noise. Decision-first. Plain language with sharp opinions.</p>
@@ -64,37 +66,50 @@ description: Signal — a weekly newsletter about AI features that actually ship
         <li>Each issue should make them think differently about one specific thing.</li>
         <li>Quote real numbers, real benchmarks, real product launches. If you can't, say so.</li>
       </ul>
-      <p>Voice anchor — primary: Paul writes Signal as a senior practitioner inside the buyer's world — direct, slightly skeptical, generous with concrete advice. Voice anchor — narrative cast: <strong>Michael Lewis (narrative)</strong> layered on top, reserved for the line that names the weird incentive — the announcement that was actually an admission.</p>
+      <p><strong>Voice anchor:</strong> Paul writes Signal as a senior practitioner inside the buyer's world — he leads sales ops at a social media ad tech platform with a background in analytics engineering and BI strategy. The features he describes are the ones his teams actually need. Direct, slightly skeptical, generous with concrete advice. First-person practitioner — no third-person references to Paul inside the issue.</p>
+
+      <h4>Voice discipline (hard rules)</h4>
+      <ul>
+        <li><strong>Banned words and phrases:</strong> leverage, synergy, empower, journey, unlock, dive in, dive deep, deep dive, "in today's fast-paced world," "the future of," "game-changer," "revolutionary," "cutting-edge," "seamless," "robust." If a sentence needs one of these to work, the sentence is broken.</li>
+        <li><strong>No exclamation points.</strong> Earn the period.</li>
+        <li><strong>Aim for 6+ "X. Y." short-declarative pairs per issue</strong> — the telltale rhythm.</li>
+        <li><strong>No throat-clearing.</strong> No "in this issue we'll explore." Start with the observation.</li>
+        <li><strong>No false cheer.</strong> If it's actually exciting, the facts will carry it.</li>
+      </ul>
 
       <h3>Topic priorities</h3>
       <ul>
-        <li><strong>Sales ops AI</strong> — CRM intelligence, deal coaching, forecasting, attribution, dashboards, rep enablement</li>
-        <li><strong>Ad tech AI</strong> — advertiser dashboards, campaign optimization, anomaly detection, audience insights, creative analysis</li>
-        <li><strong>Analytics platforms</strong> — Hex, Mode, Looker, Tableau, dbt, semantic layer products</li>
-        <li><strong>BI tools</strong> — Power BI Copilot, Tableau Pulse / Agent, Looker AI, Superset, ThoughtSpot</li>
-        <li><strong>Modern data stack</strong> — Snowflake, Databricks, Microsoft Fabric, dbt, Looker — and what their AI moves mean for daily users</li>
-        <li><strong>The senior IC lens</strong> — what a Staff Analytics Engineer or BI Director actually wants from an AI feature, vs. what gets shipped</li>
+        <li><strong>Sales ops AI features</strong> — CRM intelligence, deal coaching, forecasting, attribution, performance dashboards, rep enablement</li>
+        <li><strong>Ad sales at social platforms</strong> — AI features inside the sales workflows of social media ad platforms: advertiser-facing dashboards, sales rep copilots, pipeline forecasting, account intelligence, campaign performance summaries, RFP response automation, the internal tooling sales orgs build to scale advertiser support</li>
+        <li><strong>Ad tech AI features</strong> — advertiser dashboards, campaign optimization, anomaly detection, audience insights, creative analysis, performance reporting</li>
+        <li><strong>Analytics platform AI features</strong> — Hex, Mode, Looker, Tableau, dbt, semantic layer products</li>
+        <li><strong>BI tool AI features</strong> — Power BI Copilot, Tableau Pulse / Agent, Looker AI, Superset, ThoughtSpot</li>
+        <li><strong>Modern data stack evolution</strong> — Snowflake, Databricks, Microsoft Fabric, dbt, Looker — and what their AI moves mean for the people who use them daily</li>
+        <li><strong>The senior analytics IC and leadership lens</strong> — what a Staff/Principal Analytics Engineer or BI Director actually wants from an AI feature, vs. what gets shipped</li>
       </ul>
+      <p><em>Avoid:</em> pure foundation-model news without a B2B SaaS implication, "10 AI tools to try" lists, press-release prose, pure VC funding announcements (unless the deal shape itself is the signal), recap-of-recaps content.</p>
 
       <h3>Structure (4 sections per issue)</h3>
 
       <h4>1. The diagnostic (~150 words)</h4>
-      <p>A sharp observation about AI features in B2B SaaS. What's happening that most people see but don't talk about? No throat-clearing.</p>
+      <p>A sharp observation about AI features in B2B SaaS. What's happening that most people see but don't talk about? Hook the reader. No throat-clearing.</p>
 
-      <h4>2. What's actually shipping (~250 words)</h4>
-      <p>3–5 real signals from the last 7–14 days. What shipped, why it matters, what to take from it. Real launches, real benchmarks. Skip pure funding announcements.</p>
+      <h4>2. What's actually shipping this week (~250 words)</h4>
+      <p>3–5 real signals from the last 7–14 days. What shipped, why it matters, what to take from it. Real launches, real benchmarks. Skip pure funding announcements and generic foundation-model news.</p>
 
       <h4>3. What I'd ship this week (~300 words)</h4>
-      <p>1–2 concrete AI features, written first-person. For each: the user moment, the shape (RAG, agent, single-call, etc.), the latency budget, cost-per-call ceiling, eval shape, and what success looks like 2 weeks post-launch. Shippable by a small team in 2–3 weeks.</p>
+      <p>1–2 concrete AI features, first-person as the practitioner. For each: the user moment, the shape (RAG, agent, single-call, retrieval+ranking, etc.), the latency budget, cost-per-call ceiling, eval shape, and what success looks like 2 weeks post-launch. Shippable by a small team in 2–3 weeks.</p>
 
-      <h4>4. Closing (~80 words)</h4>
-      <p>If the reader's working on something similar, here's how to get in touch.</p>
+      <h4>4. The CTA (~80 words)</h4>
+      <p>One paragraph in an orange-tinted callout card. If the reader's app has an AI feature that feels bolted on, this is the work Golden Data does. Two to three weeks. In their codebase.</p>
 
       <h3>Quality bar</h3>
       <ul>
         <li>Does the lede make a reader stop scrolling?</li>
-        <li>Are the signals from the past 7–14 days, or padding with evergreen?</li>
+        <li>Are the signals from the past 7–14 days, or am I padding with evergreen?</li>
         <li>Could the reader take action on Monday from section 3?</li>
+        <li>Does the CTA feel like a natural extension of the issue, not a sales pitch tacked on?</li>
+        <li>Did I hit 6+ "X. Y." short-declarative shapes? Did I avoid every banned word?</li>
         <li>Any sentence I'd cut for being filler? Cut it.</li>
       </ul>
 

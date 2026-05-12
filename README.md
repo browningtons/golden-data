@@ -110,4 +110,3 @@ GitHub Pages serves from the repo root with Jekyll. The site is available at `/g
 ## Contact
 
 - Email: [thegoldendata@gmail.com](mailto:thegoldendata@gmail.com)
-- [Book a clarity call](https://calendar.app.google/nAaLqm8NWS2mXdT49)
