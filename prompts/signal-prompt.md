@@ -104,9 +104,18 @@ Do not introduce new CSS. If a styling need arises that the existing system does
 
 ## Routine flow
 
-Each weekly run is a **4-phase routine**. Run the phases in order. Notion is the source of truth for content and feedback; the repo is the publishing target.
+Each weekly run is a **5-phase routine**. Run the phases in order. Notion is the source of truth for content and feedback; the repo is the publishing target.
 
 **Notion DB:** `https://www.notion.so/8b61ee12da3745f2b12a31566f6e4b39` (data source `a3ab8f53-afa0-4b46-bfef-15b37f61f003`)
+
+### Status ownership
+
+Claude writes only two `Status` values:
+
+- `Published` — set in Phase 1 after the issue is committed to the repo.
+- `Archived` — set in Phase 2 after a Declined row's feedback has been read and absorbed.
+
+All other transitions (`Draft → In Review → Approved → Decline`) are Paul's. Don't overwrite them. If a row is in any of those states, leave the `Status` field alone.
 
 ### Phase 1 — Publish (sweep approved drafts to the repo)
 
@@ -136,13 +145,33 @@ For each Approved row:
 
 If no Approved rows exist, skip Phase 1 entirely.
 
-### Phase 2 — Learn (read prior issues for active directives)
+### Phase 2 — Archive (sweep declined drafts and learn from them)
+
+Decline carries as strong a signal as Approve — it just points the other way. Sweep declined drafts before drafting anything new.
+
+**Filter:** `Newsletter = Signal` AND `Status = Decline`
+**Sort:** `Issue Date` ascending
+
+For each Declined row:
+
+1. Read `Editorial Notes` — Paul's stated reason for declining. This is the primary signal.
+2. Read `Feedback` — your own prior run notes for that issue. Cross-reference the open questions you raised with what Paul actually flagged.
+3. Read the page body (and `Edited Version` if non-empty) to see what was on the page when the decline happened.
+4. Identify the lesson: what about the angle, the voice, the structure, or the cadence caused the decline? Distill it to one sentence.
+5. Append the lesson to the `Feedback` field, prefixed with `LESSON (declined):` so Phase 3 can find it quickly. Do not overwrite the existing Feedback content — append.
+6. Set `Status` → `Archived`.
+
+If no Declined rows exist, skip Phase 2 entirely.
+
+### Phase 3 — Learn (read prior issues for active directives)
 
 Query Notion for recent issues to learn from.
 
-**Filter:** `Newsletter = Signal` AND `Status ∈ {Approved, Published}`
+**Filter:** `Newsletter = Signal` AND `Status ∈ {Approved, Published, Archived}`
 **Sort:** `Created` descending
 **Limit:** 5 most recent
+
+`Archived` rows in this window are former Declines — their `Feedback` field carries a `LESSON (declined):` line written in Phase 2. Treat those lessons as inverted directives: this is what *not* to do this week.
 
 For each row, read fields in this priority order. **Earlier signals carry higher weight.**
 
@@ -155,13 +184,13 @@ For each row, read fields in this priority order. **Earlier signals carry higher
 4. **`Voice Pass`** — `On` rows are positive examples; `Off` rows are negative; `Mixed` is partial.
 5. **`Voice Score`** — finer-grained version of the same weighting.
 6. **`Reception`** — when filled in, the only true output signal. Prefer learnings from rows with strong reception.
-7. **`Feedback`** — your own prior run notes. Read the open-questions sections — if a previous run flagged a question for Paul, check whether his subsequent edits answered it.
+7. **`Feedback`** — your own prior run notes. Read the open-questions sections and any `LESSON (declined):` lines — if a previous run flagged a question for Paul, check whether his subsequent edits answered it.
 
-### Phase 3 — Draft
+### Phase 4 — Draft
 
-Web search for fresh signals from the past 7–14 days. Apply the structure, voice, and topic priorities documented above, weighted by the directives from Phase 2. Write the new draft.
+Web search for fresh signals from the past 7–14 days. Apply the structure, voice, and topic priorities documented above, weighted by the directives from Phase 3. Write the new draft.
 
-Before moving to Phase 4, run the **Quality bar** check below. If any answer fails, revise before writing to Notion.
+Before moving to Phase 5, run the **Quality bar** check below. If any answer fails, revise before writing to Notion.
 
 #### Quality bar
 
@@ -171,9 +200,9 @@ Before moving to Phase 4, run the **Quality bar** check below. If any answer fai
 - Does the CTA feel like a natural extension of the issue, not a sales pitch tacked on?
 - Is there any sentence I would cut for being filler? Cut it.
 
-If yes/yes/yes/yes/no, proceed to Phase 4.
+If yes/yes/yes/yes/no, proceed to Phase 5.
 
-### Phase 4 — Write the new draft to Notion (NOT to the repo)
+### Phase 5 — Write the new draft to Notion (NOT to the repo)
 
 Create a new page in the GD Newsletter DB with these properties:
 
@@ -193,7 +222,7 @@ Create a new page in the GD Newsletter DB with these properties:
 
 Page body: the full markdown of the issue, exactly as it would appear at `signal/YYYY-MM-DD.md` after publish, including the trailing voice-notes section the prior issues use.
 
-**Do not commit anything to the repo for the new draft.** The new draft only reaches the repo in Phase 1 of the next week's run, after Paul has reviewed and Approved it.
+**Do not commit anything to the repo for the new draft.** The new draft only reaches the repo in Phase 1 of the next week's run, after Paul has reviewed and Approved it. If Paul marks it `Decline` instead, the next week's Phase 2 will sweep the lesson and Archive the row.
 
 Leave these fields blank — they are Paul's to fill in during review:
 - `Voice Pass`
