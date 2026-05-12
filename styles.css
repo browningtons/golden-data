@@ -42,7 +42,9 @@
 
   /* --- UI Foundations --- */
   --bg: var(--surface-color);
-  --card-bg: #ffffff;   /* pure white intentional; see DESIGN.md (printed-page feel) */
+  --card-bg: #ffffff;              /* pure white intentional; see DESIGN.md (printed-page feel) */
+  --card-tinted-bg: #F0F9FA;       /* faint teal tint for the value card */
+  --inset-bg: var(--paper);        /* sunken/nested surface inside cards (why-it-worked) */
   --text: var(--body-color);
 
   --muted: rgba(15, 23, 42, 0.72);
@@ -188,7 +190,7 @@ section {
 
 /* A distinct look for the Value Card */
 .value-card {
-  background: #F0F9FA; /* A very light tint of Fog Teal */
+  background: var(--card-tinted-bg);
   border-color: var(--teal-halo);
   padding: 32px; /* More breathing room */
 }
@@ -664,7 +666,7 @@ textarea[aria-invalid="true"] {
 .why-it-worked {
   margin-top: 30px;
   padding: 20px;
-  background: #F8FAFC;
+  background: var(--inset-bg);
   border-radius: 12px;
   border: 1px solid var(--border);
 }
@@ -956,4 +958,155 @@ ul.list-check li::before {
   font-size: 14px;
   margin-bottom: 6px;
   font-weight: 500;
+}
+
+/* ===============================
+   8. THEME TOGGLE (icon-only nav button)
+   =============================== */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-left: 16px;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  color: var(--accent-secondary);
+  border-color: var(--teal-halo);
+  background: var(--teal-soft);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.theme-toggle .theme-icon-sun  { display: none; }
+.theme-toggle .theme-icon-moon { display: block; }
+
+[data-theme="dark"] .theme-toggle .theme-icon-sun  { display: block; }
+[data-theme="dark"] .theme-toggle .theme-icon-moon { display: none; }
+
+/* ===============================
+   9. DARK MODE
+   Hand-tuned, not mechanically inverted (per spine).
+   All overrides confined to this block — light mode unchanged.
+   =============================== */
+[data-theme="dark"] {
+  /* Core surfaces */
+  --paper:   #121821;   /* calm dark blue-charcoal, never pure black */
+  --card-bg: #1A2332;   /* raised card surface */
+  --card-tinted-bg: #15262A;   /* darker teal-tint value card */
+  --ink:     #E8EEF4;   /* cool warm-off-white, never pure white */
+
+  /* Brand — lifted for dark legibility */
+  --blue:   #5BA4D1;    /* lifted Pacific Blue */
+  --orange: #FF6610;    /* International Orange, one hair brighter */
+  --teal:   #33C2CC;    /* Fog Teal slight lift */
+
+  /* Foundations */
+  --muted:  rgba(232, 238, 244, 0.65);
+  --border: rgba(232, 238, 244, 0.12);
+  --shadow: 0 12px 30px rgba(0, 0, 0, 0.40);
+
+  /* Soft tints — recalculated against the lifted brand RGBs */
+  --orange-soft: rgba(255, 102, 16, 0.20);
+  --blue-soft:   rgba(91, 164, 209, 0.15);
+  --blue-border: rgba(91, 164, 209, 0.22);
+  --teal-soft:   rgba(51, 194, 204, 0.18);
+  --teal-halo:   rgba(51, 194, 204, 0.30);
+
+  /* Semantic status — lifted for dark contrast */
+  --success: #6FB89E;
+  --warning: #D88E54;
+  --error:   #E26666;
+  --success-soft: rgba(111, 184, 158, 0.15);
+  --warning-soft: rgba(216, 142, 84, 0.15);
+  --error-soft:   rgba(226, 102, 102, 0.15);
+}
+
+/* Component-level overrides for rules with hardcoded light-mode colors
+   that don't auto-resolve through the tokens above. */
+
+[data-theme="dark"] .btn-primary:hover {
+  background-color: #FF7833;
+  border-color: #FF7833;
+}
+
+[data-theme="dark"] .btn-primary:active {
+  background-color: #CC4900;
+  border-color: #CC4900;
+}
+
+[data-theme="dark"] .btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .btn-secondary:active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] input:hover,
+[data-theme="dark"] textarea:hover,
+[data-theme="dark"] select:hover,
+[data-theme="dark"] .input:hover {
+  border-color: rgba(232, 238, 244, 0.25);
+}
+
+[data-theme="dark"] input:disabled,
+[data-theme="dark"] textarea:disabled,
+[data-theme="dark"] select:disabled,
+[data-theme="dark"] .input:disabled {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .side-title {
+  border-bottom-color: rgba(232, 238, 244, 0.08);
+}
+
+[data-theme="dark"] .tile {
+  background: var(--card-bg);
+}
+
+[data-theme="dark"] .tile-header {
+  border-bottom-color: rgba(232, 238, 244, 0.10);
+}
+
+[data-theme="dark"] .tile:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.55);
+}
+
+[data-theme="dark"] .proof-card {
+  background: var(--card-bg);
+}
+
+/* Before-frame and label-badge.bad stay in their light "printed PDF" palette
+   intentionally — the metaphor is "this is the OLD document on paper".
+   Letting them remain bright on dark mode preserves the contrast. */
+
+[data-theme="dark"] .after-frame {
+  border-color: rgba(232, 238, 244, 0.08);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.55);
+}
+
+[data-theme="dark"] .footer {
+  color: rgba(232, 238, 244, 0.55);
+}
+
+[data-theme="dark"] a:hover {
+  color: var(--ink);  /* lighter target on dark, instead of dark blue */
 }
