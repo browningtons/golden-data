@@ -122,7 +122,7 @@ All other transitions (`Draft → In Review → Approved → Decline`) are Paul'
 Before drafting anything new, check Notion for drafts ready to ship.
 
 **Filter:** `Newsletter = Signal` AND `Status = Approved`
-**Sort:** `Issue Date` ascending (oldest first, in case multiple are queued)
+**Sort:** `Publish Date` ascending (oldest first, in case multiple are queued)
 
 For each Approved row:
 
@@ -132,9 +132,9 @@ For each Approved row:
    - `layout: issue`
    - `title:` — extract the headline from the Notion `Title` property by stripping the `"Signal — Week of <date>: "` prefix
    - `description:` — derive from the first 1–2 sentences of the body
-   - `date:` — the Notion `Issue Date` property in `YYYY-MM-DD` format
+   - `date:` — the Notion `Publish Date` property in `YYYY-MM-DD` format
    - `issue_number:` — the value computed in step 2
-4. Write the file to `signal/YYYY-MM-DD.md` (date matches `Issue Date`).
+4. Write the file to `signal/YYYY-MM-DD.md` (date matches `Publish Date`).
 5. Update `signal/index.html`:
    - Prepend a new `<li>` to the archive `<ul>` (format documented under "Archive list entry format" below)
    - Update the hero CTA `href` to point at the new `YYYY-MM-DD.html`
@@ -150,7 +150,7 @@ If no Approved rows exist, skip Phase 1 entirely.
 Decline carries as strong a signal as Approve — it just points the other way. Sweep declined drafts before drafting anything new.
 
 **Filter:** `Newsletter = Signal` AND `Status = Decline`
-**Sort:** `Issue Date` ascending
+**Sort:** `Publish Date` ascending
 
 For each Declined row:
 
@@ -214,7 +214,7 @@ Create a new page in the GD Newsletter DB with these properties:
 | `Cast` | Primary cast for this issue (`Sam Harris (dry)`, `Hitchens`, `Michael Lewis (narrative)`, etc.) |
 | `Section` | `Full Issue` |
 | `Tags` | All applicable tags |
-| `Issue Date` | This week's intended publish date |
+| `Publish Date` | This week's intended publish date |
 | `Voice Score` | Self-rated 1–10 |
 | `Word Count` | Word count of the body |
 | `Source Links` | The single most-cited URL (full source list lives in the body) |
