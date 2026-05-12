@@ -143,18 +143,27 @@ For each Approved row:
 2. Compute the next `issue_number` by scanning `movement/*.md` for the highest existing value and incrementing by 1. If the folder has no issues yet, this is `issue_number: 1`.
 3. Build the markdown frontmatter:
    - `layout: issue`
-   - `title:` — extract the headline from the Notion `Title` property by stripping the `"Movement — Week of <date>: "` prefix
+   - `title:` — extract the headline from the Notion `Title` property by stripping the `"Movement — Week of <date>: "` prefix. The `<date>` in the title prefix may not match `Publish Date` — that's expected. Strip the entire prefix regardless; `Publish Date` is the only field that governs the filename and the frontmatter `date`.
    - `description:` — derive from the first 1–2 sentences of the body
    - `date:` — the Notion `Publish Date` property in `YYYY-MM-DD` format
    - `issue_number:` — the value computed in step 2
-4. Write the file to `movement/YYYY-MM-DD.md` (date matches `Publish Date`).
+4. Write the file to `movement/YYYY-MM-DD.md` where `YYYY-MM-DD` is `Publish Date`.
 5. Update `movement/index.html`:
    - Prepend a new `<li>` to the archive `<ul>` (format documented under "Archive list entry format" below). On the first publish, also remove the placeholder `<li>` that says "Issue #1 lands soon."
    - Update the hero CTA `href` to point at the new `YYYY-MM-DD.html`.
-6. Commit and push directly to `main` with message `"Movement: Issue #N (YYYY-MM-DD)"`. Approved content does not require a PR.
-7. Update the Notion row:
+6. Open a PR. The `main` branch is protected — direct pushes return HTTP 403, so the publish goes through a PR. The flow:
+   - Cut a fresh branch `claude/publish-movement-issue-<N>` from current `main`.
+   - Stage the new issue file, the modified `movement/index.html`, and any deletions of superseded issues. Commit with message `"Movement: Issue #N (YYYY-MM-DD)"`.
+   - Push the branch.
+   - Open a PR against `main` titled `"Movement: Issue #N (YYYY-MM-DD)"`. The body should summarize what changed (file added, archive entry, hero CTA) and link the source Notion row.
+   - Wait for Paul to merge. **Do not proceed to step 7 until merge is confirmed.**
+7. Once the PR is merged, update the Notion row:
    - `Status` → `Published`
-   - Add the live URL to the page (e.g. `https://browningtons.github.io/golden-data/movement/YYYY-MM-DD.html`) — set the `userDefined:URL` page property if one exists, otherwise drop the URL into the page body as the first line.
+   - Prepend the live URL to the page body as the first content line, in this exact format (followed by a blank line, then the existing content):
+
+     ```
+     **Published:** https://browningtons.github.io/golden-data/movement/YYYY-MM-DD.html
+     ```
 
 If no Approved rows exist, skip Phase 1 entirely.
 

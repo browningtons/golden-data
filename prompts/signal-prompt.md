@@ -98,7 +98,7 @@ The `issue` layout handles all the chrome (head, nav, eyebrow, H1, CTA card, foo
 
 Use plain markdown for prose. Use `<h2>` markdown headers (`##`) for the section titles (Section 1's diagnostic doesn't need a header — it's the lede; Section 2 is `## What's actually shipping this week` (or similar); Section 3 is `## What I'd ship in your app this week` (or similar)). The CTA card at the bottom is handled by the layout — do not write your own.
 
-For lists with custom spacing or component classes (e.g. `list-bullet`), drop into raw HTML inside the markdown — kramdown allows it freely. Use `signal/2026-05-03.md` as the reference for tone and how to mix markdown with raw HTML for richer formatting.
+For lists with custom spacing or component classes (e.g. `list-bullet`), drop into raw HTML inside the markdown — kramdown allows it freely. Use the most recent published Signal issue in `signal/` as the structural reference for tone and how to mix markdown with raw HTML for richer formatting.
 
 Do not introduce new CSS. If a styling need arises that the existing system doesn't cover, use a minimal inline style.
 
@@ -130,18 +130,27 @@ For each Approved row:
 2. Compute the next `issue_number` by scanning `signal/*.md` for the highest existing value and incrementing by 1.
 3. Build the markdown frontmatter:
    - `layout: issue`
-   - `title:` — extract the headline from the Notion `Title` property by stripping the `"Signal — Week of <date>: "` prefix
+   - `title:` — extract the headline from the Notion `Title` property by stripping the `"Signal — Week of <date>: "` prefix. The `<date>` in the title prefix may not match `Publish Date` — that's expected. Strip the entire prefix regardless; `Publish Date` is the only field that governs the filename and the frontmatter `date`.
    - `description:` — derive from the first 1–2 sentences of the body
    - `date:` — the Notion `Publish Date` property in `YYYY-MM-DD` format
    - `issue_number:` — the value computed in step 2
-4. Write the file to `signal/YYYY-MM-DD.md` (date matches `Publish Date`).
+4. Write the file to `signal/YYYY-MM-DD.md` where `YYYY-MM-DD` is `Publish Date`.
 5. Update `signal/index.html`:
    - Prepend a new `<li>` to the archive `<ul>` (format documented under "Archive list entry format" below)
    - Update the hero CTA `href` to point at the new `YYYY-MM-DD.html`
-6. Commit and push directly to `main` with message `"Signal: Issue #N (YYYY-MM-DD)"`. Approved content does not require a PR.
-7. Update the Notion row:
+6. Open a PR. The `main` branch is protected — direct pushes return HTTP 403, so the publish goes through a PR. The flow:
+   - Cut a fresh branch `claude/publish-signal-issue-<N>` from current `main`.
+   - Stage the new issue file, the modified `signal/index.html`, and any deletions of superseded issues. Commit with message `"Signal: Issue #N (YYYY-MM-DD)"`.
+   - Push the branch.
+   - Open a PR against `main` titled `"Signal: Issue #N (YYYY-MM-DD)"`. The body should summarize what changed (file added, archive entry, hero CTA) and link the source Notion row.
+   - Wait for Paul to merge. **Do not proceed to step 7 until merge is confirmed.**
+7. Once the PR is merged, update the Notion row:
    - `Status` → `Published`
-   - Add the live URL to the page (e.g. `https://browningtons.github.io/golden-data/signal/YYYY-MM-DD.html`) — set the `userDefined:URL` page property if one exists, otherwise drop the URL into the page body as the first line.
+   - Prepend the live URL to the page body as the first content line, in this exact format (followed by a blank line, then the existing content):
+
+     ```
+     **Published:** https://browningtons.github.io/golden-data/signal/YYYY-MM-DD.html
+     ```
 
 If no Approved rows exist, skip Phase 1 entirely.
 
