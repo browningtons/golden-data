@@ -40,7 +40,7 @@ These hold across every app in the portfolio. The palette and persona change. Th
 | **Three questions** | _Have they actually done this?_ · _What's the deliverable, concretely?_ · _What does it cost me to find out?_ |
 | **What makes it sing** | The reader is treated as a peer ("I won't waste your time"), not a lead. "Boring is the goal." "No chatbot in the corner." |
 | **Tradeoffs locked in** | Static Jekyll site, no JS framework. No analytics. No live chat. CTA is email — friction is the filter. |
-| **Status** | Tier 3 shipped — tokens, typography, full 5-state component coverage, focus rings, semantic status tokens. Tier 4 (dark mode) pending. |
+| **Status** | Tier 4 shipped — tokens, typography, full 5-state component coverage, focus rings, semantic status tokens, hand-tuned dark mode with persisted toggle. The full spine. |
 
 ---
 
@@ -148,15 +148,16 @@ The following come from the canonical Field Guide and are not relitigated here. 
 
 ## Tier Menu (pending work)
 
-The current state is **Tier 1 — Tokens.** Pick from the menu below; each tier ships as its own PR.
+All four tiers shipped. The spine is fully implemented for this stack.
 
-| Tier | Scope | Why pick it |
+| Tier | Scope | Why it shipped |
 |---|---|---|
-| ~~**Tier 2 — Typography**~~ | ✅ Shipped 2026-05-11. Geist Sans + Geist Mono self-hosted in [`assets/fonts/`](assets/fonts); six-step scale exposed as `--text-*` tokens in `:root`. | — |
-| ~~**Tier 3 — Components & a11y**~~ | ✅ Shipped 2026-05-11. Buttons: default/hover/active/disabled/focus. Inputs: default/hover/focus/disabled/error (base ruleset, no inputs on the surface today). `--focus` aliased to Fog Teal; `:focus-visible` ring on every tabbable element. Semantic `--success` / `--warning` / `--error` tokens added with soft variants. Inline `rgba()` consolidated into soft-tint tokens. Pure-white `--card-bg` documented as intentional. | — |
-| **Tier 4 — Dark mode** | Add `data-theme="dark"` toggle on `<html>`. Hand-tune a dark palette (`--paper` → calm dark charcoal, `--ink` → warm off-white, `--blue` brighter, `--orange` slightly lightened). Persist preference; default to system. | Useful for newsletter issue pages especially — long-form reading in low light. |
+| ~~**Tier 1 — Tokens**~~ | ✅ Pre-existing. Palette + semantic roles defined in `:root`. | Was already in place when the field guide was first drafted. |
+| ~~**Tier 2 — Typography**~~ | ✅ Shipped 2026-05-11. Geist Sans + Geist Mono self-hosted in [`assets/fonts/`](assets/fonts); six-step scale exposed as `--text-*` tokens in `:root`. | The biggest visual lift for a content site — tightens the operator/research register. |
+| ~~**Tier 3 — Components & a11y**~~ | ✅ Shipped 2026-05-11. Buttons: default/hover/active/disabled/focus. Inputs: default/hover/focus/disabled/error (base ruleset, no inputs on the surface today). `--focus` aliased to Fog Teal; `:focus-visible` ring on every tabbable element. Semantic `--success` / `--warning` / `--error` tokens added with soft variants. Inline `rgba()` consolidated into soft-tint tokens. Pure-white `--card-bg` documented as intentional. | Closes the accessibility floor and the state-coverage spine rule. |
+| ~~**Tier 4 — Dark mode**~~ | ✅ Shipped 2026-05-11. `[data-theme="dark"]` overrides in [`styles.css`](styles.css) (cool blue-charcoal palette, lifted Pacific Blue + International Orange for legibility). Pre-paint script in `<head>` reads `localStorage['gd-theme']` (falling back to `prefers-color-scheme`). Header toggle persists user choice. All dark rules confined to one block — light mode unchanged. | Useful for newsletter long-form reading. Honors system preference by default. |
 
-None of these are required. Pick by appetite.
+The field guide is complete for this surface. The next move is consumption — every new page should pull from these tokens, not introduce new hex values.
 
 ---
 
@@ -173,6 +174,10 @@ None of these are required. Pick by appetite.
 | 2026-05-11 | Tier 3 — `--focus` aliased to `--teal` (Fog Teal) | Already the interaction color; pops against the orange CTA and blue text without introducing a fourth color. Spine asks for "visible + calm, usually a lighter primary" — Fog Teal lands the same brief. |
 | 2026-05-11 | Tier 3 — Keep `--card-bg` pure white as a per-app override | Operator/research register (Stripe Press, FT) reads correctly on pure-white card surfaces. Warm-tint cards would push toward "lifestyle blog." Spine rule preserved on body background (`--paper`); card override documented. |
 | 2026-05-11 | Tier 3 — Button focus uses `box-shadow` halo; everything else uses `outline` | Outline on a rounded button clips visibly at the corners; `box-shadow: 0 0 0 3px var(--teal-halo)` wraps cleanly. All other tabbables use the modern accessible default of `outline: 2px solid var(--focus); outline-offset: 2px`. |
+| 2026-05-11 | Tier 4 — Cool blue-charcoal dark background (`#121821`), not warm sepia | Operator/research register (FT, HN dark) reads correctly on cool dark surfaces. Warm-amber dark mode would push toward "lifestyle blog dark" and break the persona. |
+| 2026-05-11 | Tier 4 — Brand lifts: Pacific Blue `#0F3D57` → `#5BA4D1`, International Orange `#F04A00` → `#FF6610`, Fog Teal `#2CB6C0` → `#33C2CC` | Spine: "Primary shifts brighter for legibility on dark surfaces. Accent stays warm; lightens slightly." Lifted blue and teal lift legibility; orange shifts one hair brighter without losing the International Orange family identity. |
+| 2026-05-11 | Tier 4 — Pre-paint script in `<head>` (not just `prefers-color-scheme`) | Inline `<script>` sets `data-theme` before the stylesheet loads, preventing a flash of wrong theme when a saved preference differs from the OS. Honors `prefers-color-scheme` only when no saved choice exists. |
+| 2026-05-11 | Tier 4 — Confine all dark-mode rules to one block at the end of `styles.css` | Light mode is the canonical surface. Quarantining dark overrides means a future light-mode change can't accidentally regress dark, and reverting dark mode (if ever needed) is a clean diff. |
 
 ---
 
