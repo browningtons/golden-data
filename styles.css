@@ -1110,3 +1110,109 @@ ul.list-check li::before {
 [data-theme="dark"] a:hover {
   color: var(--ink);  /* lighter target on dark, instead of dark blue */
 }
+
+/* ===============================
+   10. PROSE SURFACES
+   For markdown-rendered newsletter issues (and any future long-form page).
+   Token-driven so dark mode auto-flips with no extra overrides.
+   =============================== */
+.card h4,
+.card h5,
+.card h6,
+article h4,
+article h5,
+article h6 {
+  color: var(--heading-color);
+  letter-spacing: -0.01em;
+  margin: 24px 0 8px;
+  font-weight: 700;
+}
+
+article h4 { font-size: 16px; }
+article h5 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; }
+article h6 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+
+/* Body paragraphs inside a prose article should have proper line-height + spacing. */
+article p {
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
+
+article ul,
+article ol {
+  margin: 0 0 18px;
+  padding-left: 24px;
+}
+
+article ol {
+  list-style: decimal;
+}
+
+article li {
+  line-height: 1.65;
+  margin-bottom: 6px;
+}
+
+/* Inline code — tinted pill, monospace. */
+:where(article, .card) code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--blue-soft);
+  color: var(--heading-color);
+  border: 1px solid var(--blue-border);
+}
+
+/* Fenced code blocks — readable container, scrollable, mono. */
+:where(article, .card) pre {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.55;
+  padding: 18px 20px;
+  border-radius: 12px;
+  background: var(--inset-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  overflow-x: auto;
+  margin: 0 0 18px;
+}
+
+/* The inline-code styling above would double up on <code> inside <pre>; reset. */
+:where(article, .card) pre code {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  font-size: 1em;
+  color: inherit;
+}
+
+/* Pull-quote — left rule in the interaction color, italic. */
+:where(article, .card) blockquote {
+  margin: 0 0 18px;
+  padding: 4px 0 4px 20px;
+  border-left: 3px solid var(--accent-secondary);
+  color: var(--text);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+:where(article, .card) blockquote p {
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Soft divider — calm thin line, not the browser's 2px inset gray. */
+:where(article, .card) hr {
+  border: 0;
+  height: 1px;
+  background: var(--border);
+  margin: 32px 0;
+}
+
+/* Strong inside prose: tighten weight a notch — 900 reads heavy in Geist. */
+:where(article, .card) strong {
+  font-weight: 700;
+  color: var(--heading-color);
+}
