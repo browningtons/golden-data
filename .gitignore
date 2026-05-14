@@ -1,0 +1,8 @@
+# Per-machine Claude Code settings (overrides; not portable)
+.claude/settings.local.json
+
+# Parallel-agent worktree checkouts
+.claude/worktrees/
+
+# OS junk
+.DS_Store
