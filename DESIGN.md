@@ -123,7 +123,7 @@ Notes on register:
 
 The newsletter voices are cast separately and live in their respective prompts:
 - **Signal** — Michael Lewis (narrative) layered on Paul-as-practitioner. See [`prompts/signal-prompt.md`](prompts/signal-prompt.md).
-- **Movement** — Sam Harris (dry) primary, Hitchens supporting. See [`prompts/movement-prompt.md`](prompts/movement-prompt.md).
+- **Crafting** — Reynolds-meets-Bateman. Reynolds for the fourth-wall winks; Bateman for the dry deadpan. See [`prompts/crafting-prompt.md`](prompts/crafting-prompt.md).
 
 The site's voice (this doc) and the newsletter voices coexist by audience: site = front-door, newsletters = sustained practitioner notes.
 
@@ -161,6 +161,22 @@ The field guide is complete for this surface. The next move is consumption — e
 
 ---
 
+## Per-App Components
+
+Patterns specific to this surface, not part of the spine.
+
+### Newsletter cluster (nav)
+
+A grouped pill in the primary nav that contains both newsletters (Signal · Crafting) with a small accent-colored eyebrow badge reading "NEWSLETTER." Visually separates the publication arm of the site from the consulting nav items (What I do / Clarity Sprint / Proof / About / Contact).
+
+- **Where:** [`_layouts/default.html`](_layouts/default.html), [`index.html`](index.html) — nav region
+- **Markup:** `<span class="nav-newsletters">` wrapping a `.nav-newsletters-label` (the eyebrow badge), two `<a>` links, and a `·` divider
+- **Styles:** [`styles.css`](styles.css) — `.nav-newsletters` (orange-bordered pill on `--orange-soft`), `.nav-newsletters-label` (solid `--orange` badge), `.nav-newsletters-divider` (`--muted` middle dot)
+- **Hidden on mobile** — the rest of `.navlinks` is hidden under 900px; the cluster follows the same rule.
+- **Why a cluster rather than two more nav items:** Signal and Crafting are sibling letters from the same studio — they should read as one editorial body, not two separate menu entries competing with Clarity Sprint. The eyebrow badge labels the function ("Newsletter") so the names can stay clean.
+
+---
+
 ## Decision Log
 
 | Date | Decision | Rationale |
@@ -178,6 +194,10 @@ The field guide is complete for this surface. The next move is consumption — e
 | 2026-05-11 | Tier 4 — Brand lifts: Pacific Blue `#0F3D57` → `#5BA4D1`, International Orange `#F04A00` → `#FF6610`, Fog Teal `#2CB6C0` → `#33C2CC` | Spine: "Primary shifts brighter for legibility on dark surfaces. Accent stays warm; lightens slightly." Lifted blue and teal lift legibility; orange shifts one hair brighter without losing the International Orange family identity. |
 | 2026-05-11 | Tier 4 — Pre-paint script in `<head>` (not just `prefers-color-scheme`) | Inline `<script>` sets `data-theme` before the stylesheet loads, preventing a flash of wrong theme when a saved preference differs from the OS. Honors `prefers-color-scheme` only when no saved choice exists. |
 | 2026-05-11 | Tier 4 — Confine all dark-mode rules to one block at the end of `styles.css` | Light mode is the canonical surface. Quarantining dark overrides means a future light-mode change can't accidentally regress dark, and reverting dark mode (if ever needed) is a clean diff. |
+| 2026-05-15 | Add the Newsletter cluster pattern to the primary nav (Signal · Crafting under an orange "NEWSLETTER" badge) | Crafting page existed but wasn't linked. Pairing the two letters under one labeled pill reads as one editorial body and keeps the consulting nav items uncluttered. Per-app pattern, not spine. |
+| 2026-05-15 | Introduce `--orange-hover` / `--orange-active` tokens in both `:root` and `.dark` blocks; delete the dark-mode `.btn-primary` component overrides | The hover/active hexes were the only state colors hardcoded outside the token block. Tokenizing means dark mode resolves through the same rule path as light, so eight lines of `[data-theme="dark"] .btn-primary` overrides could be removed. Reduces drift; light/dark stay in sync structurally. |
+| 2026-05-15 | Correct DESIGN.md — newsletter is "Crafting" (Reynolds-meets-Bateman), not "Movement" (Sam Harris / Hitchens) | DESIGN.md was stale. The active prompt is [`prompts/crafting-prompt.md`](prompts/crafting-prompt.md); the voice cast there is Reynolds-meets-Bateman. Doc now matches source of truth. |
+| 2026-05-15 | Delete unused `.shot-placeholder` ruleset | Confirmed dead — defined in `styles.css`, referenced in zero HTML. Held two Tailwind-slate hex literals (`#f1f5f9`, `#cbd5e1`). Removed rather than tokenized; deletion is the cheaper fix. |
 
 ---
 
