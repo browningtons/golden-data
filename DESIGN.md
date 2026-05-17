@@ -2,7 +2,7 @@
 
 > **The math is the credibility. The tone is the relief.**
 
-This site inherits Paul Brown's portable design system. See the canonical Field Guide in [debt-snowball-dolphin/DESIGN.md](https://github.com/browningtons/debt-snowball-dolphin/blob/main/DESIGN.md) for the system in full. This doc is the per-app surface: palette, persona, three questions, hero outcome.
+This site inherits Paul Brown's portable design system. See the canonical Field Guide in `~/.claude/skills/app-design-port/references/field-guide.md` for the system in full. This doc is the per-app surface: palette, persona, three questions, hero outcome.
 
 **Stack note.** Golden Data is a Jekyll + plain HTML/CSS site (GitHub Pages), not a React/Tailwind/shadcn app. The spine *principles* (tokens, state coverage, light + dark, accessibility floor) apply. The spine *implementation rules* that assume React (`theme.ts`, Tailwind v4 `@theme inline`, shadcn aliases, Lucide React, `ThemeProvider`) are N/A here — the equivalents live in [`styles.css`](styles.css).
 
@@ -131,7 +131,7 @@ The site's voice (this doc) and the newsletter voices coexist by audience: site 
 
 ## Spine Rules (inherited)
 
-The following come from the canonical Field Guide and are not relitigated here. See [debt-snowball-dolphin/DESIGN.md](https://github.com/browningtons/debt-snowball-dolphin/blob/main/DESIGN.md) for the full text:
+The following come from the canonical Field Guide and are not relitigated here. See `~/.claude/skills/app-design-port/references/field-guide.md` for the full text:
 
 - **Spacing.** Multiples of 4 or 8. No nested cards.
 - **State coverage.** Buttons define 5 states (default, hover, active, disabled, focus); inputs define 5 (default, hover, focus, disabled, error). Focus rings always visible. ✅ _Shipped Tier 3 — see [`styles.css`](styles.css)._
