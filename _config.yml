@@ -51,5 +51,4 @@ exclude:
   - README.md
   - DESIGN.md
   - LICENSE
-  - GD Invoice Example.pdf
   - prompts
