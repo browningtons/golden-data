@@ -774,6 +774,66 @@ textarea[aria-invalid="true"] {
   font-weight: 700;
 }
 
+.nav-newsletters a.is-active {
+  position: relative;
+  font-weight: 800;
+}
+
+.nav-newsletters a.is-active--signal,
+.nav-newsletters a.is-active--signal:hover {
+  color: var(--orange);
+}
+
+.nav-newsletters a.is-active--crafting,
+.nav-newsletters a.is-active--crafting:hover {
+  color: var(--accent-secondary);
+}
+
+/* --- Issue header (Signal / Crafting articles) --- */
+.issue-header {
+  margin-bottom: 18px;
+}
+
+.issue-meta {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 10px 0 0 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+.newsletter-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  text-decoration: none;
+  border: 1px solid var(--orange);
+  background: var(--orange-soft);
+  color: var(--orange);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.newsletter-badge:hover {
+  background: var(--orange);
+  color: #ffffff;
+}
+
+.newsletter-badge--crafting {
+  border-color: var(--accent-secondary);
+  background: var(--teal-soft);
+  color: var(--accent-secondary);
+}
+
+.newsletter-badge--crafting:hover {
+  background: var(--accent-secondary);
+  color: #ffffff;
+}
+
 /* --- Hero Section --- */
 .hero {
   display: grid;

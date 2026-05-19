@@ -1,0 +1,42 @@
+---
+layout: null
+permalink: /crafting/feed.xml
+---
+{% assign issues = site.pages | where: "layout", "issue" | where_exp: "p", "p.url contains '/crafting/'" | sort: "date" | reverse -%}
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Crafting · Golden Data</title>
+  <subtitle>Weekly notes on the senior analytics craft — skills moving up the premium curve, tooling reshaping the work, and one concrete move to stay sharp this week.</subtitle>
+  <link href="{{ '/crafting/feed.xml' | absolute_url }}" rel="self" type="application/atom+xml" />
+  <link href="{{ '/crafting/' | absolute_url }}" rel="alternate" type="text/html" />
+  <id>{{ '/crafting/' | absolute_url }}</id>
+  {% if issues.first -%}
+  <updated>{{ issues.first.date | date_to_xmlschema }}</updated>
+  {%- else -%}
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  {%- endif %}
+  <author>
+    <name>Paul Brown</name>
+    <email>thegoldendata@gmail.com</email>
+    <uri>{{ '/' | absolute_url }}</uri>
+  </author>
+  <rights>© {{ site.time | date: '%Y' }} Golden Data LLC</rights>
+  {% for issue in issues -%}
+  <entry>
+    <title>{{ issue.title | xml_escape }}</title>
+    <link href="{{ issue.url | absolute_url }}" rel="alternate" type="text/html" />
+    <id>{{ issue.url | absolute_url }}</id>
+    <updated>{{ issue.date | date_to_xmlschema }}</updated>
+    <published>{{ issue.date | date_to_xmlschema }}</published>
+    <author><name>Paul Brown</name></author>
+    <category term="Crafting" />
+    {%- if issue.issue_number %}
+    <category term="Issue #{{ issue.issue_number }}" />
+    {%- endif %}
+    {%- if issue.description %}
+    <summary>{{ issue.description | xml_escape }}</summary>
+    {%- endif %}
+    <content type="html">{{ issue.content | xml_escape }}</content>
+  </entry>
+  {% endfor -%}
+</feed>

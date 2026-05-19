@@ -4,8 +4,11 @@ layout: default
 {% assign newsletter = page.newsletter | default: "Signal" %}
 {% assign newsletter_slug = newsletter | downcase %}
 {% assign archive_path = '/' | append: newsletter_slug | append: '/' %}
-<article class="card" style="padding: 48px; max-width: 760px; margin: 0 auto;">
-  <p class="eyebrow">{{ newsletter }} — Issue #{{ page.issue_number }} · {{ page.date | date: "%B %-d, %Y" }}</p>
+<article class="card issue-article" style="padding: 48px; max-width: 760px; margin: 0 auto;">
+  <header class="issue-header">
+    <a href="{{ archive_path | relative_url }}" class="newsletter-badge newsletter-badge--{{ newsletter_slug }}">{{ newsletter }}</a>
+    <p class="issue-meta">Issue #{{ page.issue_number }} · {{ page.date | date: "%B %-d, %Y" }}</p>
+  </header>
 
   <h1 style="margin-bottom: 24px;">{{ page.title }}</h1>
 
@@ -16,6 +19,6 @@ layout: default
   </div>
 
   <p style="margin-top: 40px; font-size: 14px; color: var(--muted);">
-    <a href="{{ archive_path | relative_url }}">← All issues</a> · Drafted with Claude · Edited by Paul Brown
+    <a href="{{ archive_path | relative_url }}">← All {{ newsletter }} issues</a> · Drafted with Claude · Edited by Paul Brown
   </p>
 </article>

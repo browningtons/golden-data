@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="{{ page.description | default: site.description }}" />
 
-  <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+  <title>{% if page.layout == 'issue' %}{{ page.newsletter | default: "Signal" }} Issue #{{ page.issue_number }} · {% endif %}{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
 
   <link rel="icon" href="{{ '/assets/favicon.ico' | relative_url }}" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/favicon-32x32.png' | relative_url }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/favicon-16x16.png' | relative_url }}">
   <link rel="apple-touch-icon" href="{{ '/assets/apple-touch-icon.png' | relative_url }}">
+
+  <link rel="alternate" type="application/atom+xml" title="Signal · Golden Data" href="{{ '/signal/feed.xml' | relative_url }}">
+  <link rel="alternate" type="application/atom+xml" title="Crafting · Golden Data" href="{{ '/crafting/feed.xml' | relative_url }}">
 
   <script>
     (function() {
@@ -34,14 +37,13 @@
       </a>
 
       <nav class="navlinks" aria-label="Primary">
-        <a href="{{ '/' | relative_url }}#what">What I do</a>
-        <a href="{{ '/' | relative_url }}#offer">Clarity Sprint</a>
-        <a href="{{ '/' | relative_url }}#proof">Proof</a>
+        <a href="{{ '/' | relative_url }}#what">What We Do</a>
+        <a href="{{ '/' | relative_url }}#examples">Examples</a>
         <span class="nav-newsletters" aria-label="Newsletters">
           <span class="nav-newsletters-label">Newsletter</span>
-          <a href="{{ '/signal/' | relative_url }}">Signal</a>
+          <a href="{{ '/signal/' | relative_url }}"{% if page.url contains '/signal/' %} class="is-active is-active--signal" aria-current="page"{% endif %}>Signal</a>
           <span class="nav-newsletters-divider" aria-hidden="true">·</span>
-          <a href="{{ '/crafting/' | relative_url }}">Crafting</a>
+          <a href="{{ '/crafting/' | relative_url }}"{% if page.url contains '/crafting/' %} class="is-active is-active--crafting" aria-current="page"{% endif %}>Crafting</a>
         </span>
         <a href="{{ '/' | relative_url }}#about">About</a>
         <a href="{{ '/' | relative_url }}#contact">Contact</a>
@@ -68,7 +70,8 @@
         <span style="opacity:.75;">Bridging your data with strategy</span>
       </div>
       <div class="navlinks">
-        <a href="{{ '/' | relative_url }}#offer">Clarity Sprint</a>
+        <a href="{{ '/' | relative_url }}#what">What We Do</a>
+        <a href="{{ '/' | relative_url }}#examples">Examples</a>
         <a href="{{ '/signal/' | relative_url }}">Signal</a>
         <a href="{{ '/crafting/' | relative_url }}">Crafting</a>
         <a href="{{ '/' | relative_url }}#contact">Contact</a>

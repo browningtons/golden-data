@@ -39,7 +39,7 @@ User moment → Spec → Eval setup → Build → Latency/cost validation → Ha
 5. **Latency/cost validation.** Verify against the budget you signed off on. Tune until it holds.
 6. **Handoff.** Working feature. Eval harness. Cost monitor. A short doc explaining what was shipped and why.
 
-The shape is a 2–3 week **Clarity Sprint**. Pricing on the intro call.
+The shape is a 2–3 week **Clarity Sprint**. Pricing by email — [thegoldendata@gmail.com](mailto:thegoldendata@gmail.com).
 
 ---
 

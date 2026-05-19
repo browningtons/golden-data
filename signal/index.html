@@ -13,12 +13,17 @@ description: Signal — a weekly newsletter about AI features that actually ship
     700–1,000 words. No fluff.
   </p>
 
-  <a class="btn btn-primary" href="2026-05-17.html">
-    Read the latest issue <span aria-hidden="true">→</span>
-  </a>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="2026-05-17.html">
+      Read the latest issue <span aria-hidden="true">→</span>
+    </a>
+    <a class="btn btn-secondary" href="{{ '/signal/feed.xml' | relative_url }}">
+      Subscribe via RSS
+    </a>
+  </div>
 
   <p class="micro">
-    Written by Paul Brown · Drafted with Claude · Edited and shipped by a human.
+    Written by Paul Brown · Drafted with Claude · Edited and shipped by a human. Subscribe via any RSS reader — <a href="{{ '/signal/feed.xml' | relative_url }}">feed URL</a>.
   </p>
 </div>
 
@@ -57,13 +62,13 @@ description: Signal — a weekly newsletter about AI features that actually ship
     <div class="routine-content">
 
       <h3>Audience</h3>
-      <p>Three overlapping groups:</p>
+      <p>Three overlapping groups, all reading because they want production truth, not pitch-deck truth.</p>
       <ol>
-        <li><strong>Buyers</strong> — SaaS founders, CTOs, and heads of product at companies building tools for sales operations, ad tech, analytics, BI, and the modern data stack. Technical, busy, skeptical of AI hype, and have likely shipped at least one AI feature already and watched it underperform.</li>
-        <li><strong>Advocates / influencers</strong> — senior analytics ICs and leaders who use those tools every day and quietly steer purchasing decisions: Staff/Principal Analytics Engineers, Senior/Staff Data Analysts, Product Analytics Managers, BI/Analytics Directors, and fintech / compliance-focused analytics leads.</li>
-        <li><strong>Sales leaders at social ad platforms</strong> — sales ops leaders, RevOps directors, and sales leadership at social media companies that sell advertising inventory (the Reddits, Pinterests, Snaps, TikToks of the world). They run forecasting, pipeline, rep enablement, and advertiser-facing analytics workflows where AI features land or fail in production.</li>
+        <li><strong>Buyers</strong> — SaaS founders, CTOs, and heads of product at companies building tools for sales operations, RevOps, ad tech, analytics, BI, and the modern data stack. Technical, busy, skeptical of AI hype, and have likely shipped at least one AI feature already and watched it underperform in production.</li>
+        <li><strong>Advocates and operators</strong> — senior analytics ICs and leaders who use those tools every day and quietly steer purchasing decisions: Staff and Principal Analytics Engineers, Senior and Staff Data Analysts, Product Analytics Managers, BI and Analytics Directors, AI/ML Data Engineers, and fintech and compliance-focused analytics leads.</li>
+        <li><strong>Sales operations and RevOps leaders inside ad-supported and ad-tech businesses</strong> — sales ops directors, RevOps leads, and sales leadership at companies whose revenue depends on advertising inventory or ad-tech infrastructure. They run forecasting, pipeline hygiene, rep enablement, advertiser-facing analytics, and the internal tooling that scales advertiser support.</li>
       </ol>
-      <p>All three groups read because they want to know what AI features in their world are actually working in production, not what's getting funded.</p>
+      <p>All three want production truth — what AI features in their world are actually working right now, what the data and infrastructure underneath looks like, and what to build, buy, or learn next. The audience above is described generically; the newsletter itself reports on specific companies and products by name, as competitive industry coverage from publicly available material.</p>
 
       <h3>Brand voice</h3>
       <p>Calm. Anti-noise. Decision-first. Plain language with sharp opinions.</p>
@@ -74,7 +79,7 @@ description: Signal — a weekly newsletter about AI features that actually ship
         <li>Each issue should make them think differently about one specific thing.</li>
         <li>Quote real numbers, real benchmarks, real product launches. If you can't, say so.</li>
       </ul>
-      <p><strong>Voice anchor:</strong> Paul writes Signal as a senior practitioner inside the buyer's world — he leads sales ops at a social media ad tech platform with a background in analytics engineering and BI strategy. The features he describes are the ones his teams actually need. Direct, slightly skeptical, generous with concrete advice. First-person practitioner — no third-person references to Paul inside the issue.</p>
+      <p><strong>Voice anchor:</strong> Paul writes Signal as a senior practitioner — a decade across analytics engineering, senior data analyst leadership, BI strategy, sales operations, and RevOps. Direct, slightly skeptical, generous with concrete advice. First-person practitioner — no third-person references to Paul inside the issue.</p>
 
       <h4>Voice discipline (hard rules)</h4>
       <ul>
@@ -86,16 +91,19 @@ description: Signal — a weekly newsletter about AI features that actually ship
       </ul>
 
       <h3>Topic priorities</h3>
+      <p>The bar is depth, not breadth: name the product, the version, the launch date, the disclosed numbers, the behavior shipped — not the press-release abstraction.</p>
       <ul>
-        <li><strong>Sales ops AI features</strong> — CRM intelligence, deal coaching, forecasting, attribution, performance dashboards, rep enablement</li>
-        <li><strong>Ad sales at social platforms</strong> — AI features inside the sales workflows of social media ad platforms: advertiser-facing dashboards, sales rep copilots, pipeline forecasting, account intelligence, campaign performance summaries, RFP response automation, the internal tooling sales orgs build to scale advertiser support</li>
-        <li><strong>Ad tech AI features</strong> — advertiser dashboards, campaign optimization, anomaly detection, audience insights, creative analysis, performance reporting</li>
-        <li><strong>Analytics platform AI features</strong> — Hex, Mode, Looker, Tableau, dbt, semantic layer products</li>
-        <li><strong>BI tool AI features</strong> — Power BI Copilot, Tableau Pulse / Agent, Looker AI, Superset, ThoughtSpot</li>
-        <li><strong>Modern data stack evolution</strong> — Snowflake, Databricks, Microsoft Fabric, dbt, Looker — and what their AI moves mean for the people who use them daily</li>
-        <li><strong>The senior analytics IC and leadership lens</strong> — what a Staff/Principal Analytics Engineer or BI Director actually wants from an AI feature, vs. what gets shipped</li>
+        <li><strong>Sales operations AI features</strong> — CRM intelligence, conversation intelligence, deal coaching and risk scoring, pipeline scoring, forecasting accuracy and bias correction, attribution modeling, rep enablement, sales engagement automation, account research and prospect intelligence. The internal-tooling layer most large sales orgs are wrestling with is where the real work lives.</li>
+        <li><strong>RevOps and the GTM data stack</strong> — RevOps platforms, the connective tissue between CRM and the data warehouse, reverse ETL, identity stitching, lead-to-account matching, territory design, comp plan modeling, deal-desk automation, quota setting. The shift where RevOps becomes an engineering discipline is the story.</li>
+        <li><strong>Ad-tech and digital-advertising AI</strong> — advertiser-facing dashboards, campaign optimization, bidding intelligence, anomaly detection, audience insights, creative analysis and generation, measurement and incrementality, post-cookie measurement, marketing mix modeling revival, clean-room workflows, retail media, CTV measurement, identity resolution.</li>
+        <li><strong>Ad sales workflows inside ad-supported businesses</strong> — sales-rep copilots, pipeline forecasting, advertiser account intelligence, campaign performance summaries, RFP and proposal automation, the internal AI features that scale ad sales teams. Coverage names the platforms that ship in this space; the interesting story is the workflow and the disclosed metric, not the brand.</li>
+        <li><strong>Analytics platform AI features</strong> — Hex, Mode, Sigma, Omni, Looker, Tableau, dbt Cloud, Cube, MetricFlow, semantic-layer products. Open Semantic Interchange and the MCP-style integrations are an active story.</li>
+        <li><strong>BI tool AI features</strong> — Power BI Copilot, Tableau Pulse and Tableau Agent, Looker AI, Microsoft Fabric Data Agents, Superset, ThoughtSpot, Sigma Agents. The dashboard-as-fallback move has not finished playing out.</li>
+        <li><strong>Modern data stack and data-platform evolution</strong> — Snowflake, Databricks, Microsoft Fabric, BigQuery, dbt Labs; data-contract tooling; observability and lineage; governance frameworks; cost optimization; the semantic layer as battleground.</li>
+        <li><strong>Data science and applied ML research that matters in production</strong> — retrieval and reranking, evaluation methodology, agent reliability, structured-output reliability, incrementality testing, causal inference applied to product analytics, eval-harness papers, the operational side of LLM systems. Cite the paper title, the authors, and the venue. No "researchers found" without naming the researchers.</li>
+        <li><strong>The senior analytics IC and AI/ML data engineer lens</strong> — what a Staff or Principal Analytics Engineer, an AI/ML Data Engineer, or a BI Director actually wants from an AI feature, versus what gets shipped. The shape of these roles is shifting in real time.</li>
       </ul>
-      <p><em>Avoid:</em> pure foundation-model news without a B2B SaaS implication, "10 AI tools to try" lists, press-release prose, pure VC funding announcements (unless the deal shape itself is the signal), recap-of-recaps content.</p>
+      <p><em>Avoid:</em> pure foundation-model news without a B2B SaaS implication, "10 AI tools to try" lists, press-release prose, pure VC funding announcements unless the deal shape itself is the signal, recap-of-recaps content.</p>
 
       <h3>Structure (4 sections per issue)</h3>
 
@@ -103,19 +111,21 @@ description: Signal — a weekly newsletter about AI features that actually ship
       <p>A sharp observation about AI features in B2B SaaS. What's happening that most people see but don't talk about? Hook the reader. No throat-clearing.</p>
 
       <h4>2. What's actually shipping this week (~250 words)</h4>
-      <p>3–5 real signals from the last 7–14 days. What shipped, why it matters, what to take from it. Real launches, real benchmarks. Skip pure funding announcements and generic foundation-model news.</p>
+      <p>3–5 real signals from the last 7–14 days. Each names the product, the version or release, the launch date, the disclosed numbers (revenue, run rate, customer count, latency benchmark, accuracy benchmark — whatever is real), and what the founder/CTO (or their senior analytics lead, RevOps director, or AI/ML data engineer) should take from it. Research gets cited at the paper level — title, authors, venue. Skip pure funding announcements, generic foundation-model news, anything that reads like a press release.</p>
 
       <h4>3. What I'd ship this week (~300 words)</h4>
-      <p>1–2 concrete AI features, first-person as the practitioner. For each: the user moment, the shape (RAG, agent, single-call, retrieval+ranking, etc.), the latency budget, cost-per-call ceiling, eval shape, and what success looks like 2 weeks post-launch. Shippable by a small team in 2–3 weeks.</p>
+      <p>1–2 concrete AI features, first-person as the practitioner. For each: the user moment, the data shape, the system shape (RAG, agent, single-call, retrieval+ranking, structured output, fine-tuned classifier), the latency budget, the cost shape (per-call ceiling + monthly envelope), the eval shape (golden examples, regression-test setup, failure modes), the instrumentation, what success looks like at 2 weeks, and what a credible failure looks like. Shippable by a small team in 2–3 weeks.</p>
 
       <h4>4. The CTA (~80 words)</h4>
-      <p>One paragraph in an orange-tinted callout card. If the reader's app has an AI feature that feels bolted on, this is the work Golden Data does. Two to three weeks. In their codebase.</p>
+      <p>One short paragraph in an orange-tinted callout card. Direct invite — "send me an email and we will talk" in bold, one sentence opening the door to readers working on something close, and a brief note that there's no calendar funnel or pitch deck behind the link. Email primary, RSS subscribe secondary.</p>
 
       <h3>Quality bar</h3>
       <ul>
         <li>Does the lede make a reader stop scrolling?</li>
         <li>Are the signals from the past 7–14 days, or am I padding with evergreen?</li>
+        <li>Did every signal name the product, the version, the date, and a real number where one exists? Did cited research name the paper, authors, and venue?</li>
         <li>Could the reader take action on Monday from section 3?</li>
+        <li>Did section 3 features specify data shape, system shape, latency, cost, eval, instrumentation, and a credible failure mode — not just a vibe?</li>
         <li>Does the CTA feel like a natural extension of the issue, not a sales pitch tacked on?</li>
         <li>Did I hit 6+ "X. Y." short-declarative shapes? Did I avoid every banned word?</li>
         <li>Any sentence I'd cut for being filler? Cut it.</li>
