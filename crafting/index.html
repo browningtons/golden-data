@@ -14,10 +14,14 @@ description: Crafting — a weekly brief on the senior analytics craft. What the
     The name is a posture: you are crafting the work, not riding the market.
   </p>
 
+  {%- assign crafting_issues = site.crafting | sort: "date" | reverse -%}
+  {%- assign latest = crafting_issues | first -%}
   <div class="cta-row">
-    <a class="btn btn-primary" href="2026-05-16.html">
+    {% if latest %}
+    <a class="btn btn-primary" href="{{ latest.url | relative_url }}">
       Read the latest issue <span aria-hidden="true">→</span>
     </a>
+    {% endif %}
     <a class="btn btn-secondary" href="{{ '/crafting/feed.xml' | relative_url }}">
       Subscribe via RSS
     </a>
@@ -31,14 +35,12 @@ description: Crafting — a weekly brief on the senior analytics craft. What the
 <div id="archive" class="card" style="padding: 28px; margin-top: 16px;">
   <p style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 800; color: var(--heading-color); margin-bottom: 14px;">Archive</p>
   <ul style="padding: 0; list-style: none; margin: 0;">
-    <li style="margin-bottom: 14px;">
-      <strong style="color: var(--heading-color);">May 16, 2026 — Issue #2</strong> ·
-      <a href="2026-05-16.html">Product Analytics Is the Q2 Hire.</a>
+    {%- for issue in crafting_issues -%}
+    <li{% unless forloop.last %} style="margin-bottom: 14px;"{% endunless %}>
+      <strong style="color: var(--heading-color);">{{ issue.date | date: "%B %-d, %Y" }} — Issue #{{ issue.issue_number }}</strong> ·
+      <a href="{{ issue.url | relative_url }}">{{ issue.title }}</a>
     </li>
-    <li>
-      <strong style="color: var(--heading-color);">May 11, 2026 — Issue #1</strong> ·
-      <a href="2026-05-11.html">The Cuts Are Priced In. The Build-Out Isn't.</a>
-    </li>
+    {%- endfor -%}
   </ul>
 </div>
 

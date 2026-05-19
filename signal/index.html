@@ -13,10 +13,14 @@ description: Signal — a weekly newsletter about AI features that actually ship
     700–1,000 words. No fluff.
   </p>
 
+  {%- assign signal_issues = site.signal | sort: "date" | reverse -%}
+  {%- assign latest = signal_issues | first -%}
   <div class="cta-row">
-    <a class="btn btn-primary" href="2026-05-17.html">
+    {% if latest %}
+    <a class="btn btn-primary" href="{{ latest.url | relative_url }}">
       Read the latest issue <span aria-hidden="true">→</span>
     </a>
+    {% endif %}
     <a class="btn btn-secondary" href="{{ '/signal/feed.xml' | relative_url }}">
       Subscribe via RSS
     </a>
@@ -30,18 +34,12 @@ description: Signal — a weekly newsletter about AI features that actually ship
 <div class="card" style="padding: 28px; margin-top: 16px;">
   <p style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 800; color: var(--heading-color); margin-bottom: 14px;">Archive</p>
   <ul style="padding: 0; list-style: none; margin: 0;">
-    <li style="margin-bottom: 14px;">
-      <strong style="color: var(--heading-color);">May 17, 2026 — Issue #3</strong> ·
-      <a href="2026-05-17.html">AI revenue is becoming a line item.</a>
+    {%- for issue in signal_issues -%}
+    <li{% unless forloop.last %} style="margin-bottom: 14px;"{% endunless %}>
+      <strong style="color: var(--heading-color);">{{ issue.date | date: "%B %-d, %Y" }} — Issue #{{ issue.issue_number }}</strong> ·
+      <a href="{{ issue.url | relative_url }}">{{ issue.title }}</a>
     </li>
-    <li style="margin-bottom: 14px;">
-      <strong style="color: var(--heading-color);">May 13, 2026 — Issue #2</strong> ·
-      <a href="2026-05-13.html">The dashboard stopped being the product.</a>
-    </li>
-    <li>
-      <strong style="color: var(--heading-color);">May 11, 2026 — Issue #1</strong> ·
-      <a href="2026-05-11.html">The IC Track Detached from the Manager Track.</a>
-    </li>
+    {%- endfor -%}
   </ul>
 </div>
 

@@ -65,7 +65,7 @@ Avoid: generic career advice, LinkedIn-influencer takes, listicles, anything tha
 
 ## Output requirements
 
-- **Format:** Markdown file with YAML frontmatter at `crafting/YYYY-MM-DD.md`. The Jekyll `issue` layout handles the head/nav/footer chrome, the eyebrow, the H1, the trailing CTA card, and the "← All issues" footer line. Your job is the body content only.
+- **Format:** Markdown file with YAML frontmatter at `_crafting/YYYY-MM-DD.md`. The Jekyll `issue` layout handles the head/nav/footer chrome, the eyebrow, the H1, the trailing CTA card, and the "← All issues" footer line. Your job is the body content only.
 - **Filename:** Today's date in ISO format (e.g. `2026-05-10.md`).
 - **Length:** 700–1,000 words in the body. Tight. No fluff.
 - **Sources:** Use web search. Cite real signals from the past 7–14 days. Real comp data, real job posts, real exec moves, real tooling announcements. If a section can't be supported by recent data, say so honestly rather than padding.
@@ -164,7 +164,7 @@ For each Approved row:
    - `description:` — derive from the first 1–2 sentences of the body
    - `date:` — the Notion `Publish Date` property in `YYYY-MM-DD` format
    - `issue_number:` — the value computed in step 2
-4. Write the file to `crafting/YYYY-MM-DD.md` where `YYYY-MM-DD` is `Publish Date`.
+4. Write the file to `_crafting/YYYY-MM-DD.md` where `YYYY-MM-DD` is `Publish Date`.
 5. Update `crafting/index.html`:
    - Prepend a new `<li>` to the archive `<ul>` (format documented under "Archive list entry format" below). On the first publish, also remove the placeholder `<li>` that says "Issue #1 lands soon."
    - Update the hero CTA `href` to point at the new `YYYY-MM-DD.html`.
@@ -262,7 +262,7 @@ Create a new page in the GD Newsletter DB with these properties:
 | `Source Links` | The single most-cited URL (full source list lives in the body) |
 | `Feedback` | Run notes — cadence observations, voice cast notes, open questions for Paul, prior-issue questions resolved this week |
 
-Page body: the full markdown of the issue, exactly as it would appear at `crafting/YYYY-MM-DD.md` after publish, including a trailing voice-notes section that mirrors Signal's existing pattern (cast, telltale shape count, LinkedIn-speak audit, exclamation-point count, open questions for Paul).
+Page body: the full markdown of the issue, exactly as it would appear at `_crafting/YYYY-MM-DD.md` after publish, including a trailing voice-notes section that mirrors Signal's existing pattern (cast, telltale shape count, LinkedIn-speak audit, exclamation-point count, open questions for Paul).
 
 **Do not commit anything to the repo for the new draft.** The new draft only reaches the repo in Phase 1 of the next week's run, after Paul has reviewed and Approved it. If Paul marks it `Decline` instead, the next week's Phase 2 will sweep the lesson and Archive the row.
 

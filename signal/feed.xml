@@ -2,7 +2,7 @@
 layout: null
 permalink: /signal/feed.xml
 ---
-{% assign issues = site.pages | where: "layout", "issue" | where_exp: "p", "p.url contains '/signal/'" | sort: "date" | reverse -%}
+{% assign issues = site.signal | sort: "date" | reverse -%}
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Signal · Golden Data</title>

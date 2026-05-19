@@ -69,7 +69,7 @@ Each issue leans hard into at least one of these spaces, and where possible touc
 
 ## Output requirements
 
-- **Format:** Markdown file with YAML frontmatter at `signal/YYYY-MM-DD.md`. The Jekyll `issue` layout handles the head/nav/footer chrome, the eyebrow, the H1, the trailing CTA card, and the "← All issues" footer line. Your job is the body content only.
+- **Format:** Markdown file with YAML frontmatter at `_signal/YYYY-MM-DD.md`. The Jekyll `issue` layout handles the head/nav/footer chrome, the eyebrow, the H1, the trailing CTA card, and the "← All issues" footer line. Your job is the body content only.
 - **Filename:** Today's date in ISO format (e.g. `2026-05-10.md`).
 - **Length:** 700–1,000 words in the body. Tight. No fluff.
 - **Sources:** Use web search. Cite real signals from the past 7–14 days. Real product launches, real research, real benchmarks. If a section can't be supported by recent data, say so honestly rather than padding.
@@ -115,7 +115,7 @@ These should be the kind of feature a small team could ship in 2–3 weeks. Not 
 
 ### 4. The CTA — ~80 words
 
-One short paragraph framed inside an orange-tinted callout card. Direct and plainspoken — the move is "send me an email and we will talk", not a service pitch. Lead with that line in bold. Follow with one sentence opening the door to readers working on something close to the issue's topic, and a brief disclaimer that there's no calendar funnel or pitch deck behind the link — Paul reads every note that comes in. End with an "Email me" primary button linking to `mailto:thegoldendata@gmail.com` and a "Subscribe via RSS" secondary button linking to `../feed.xml`. No calendar links, no Clarity Sprint pitch, no service-sale framing.
+One short paragraph framed inside an orange-tinted callout card. Direct and plainspoken — the move is "send me an email and we will talk", not a service pitch. Lead with that line in bold. Follow with one sentence opening the door to readers working on something close to the issue's topic, and a brief disclaimer that there's no calendar funnel or pitch deck behind the link — Paul reads every note that comes in. End with an "Email me" primary button linking to `mailto:thegoldendata@gmail.com` and a "Subscribe via RSS" secondary button linking to `{{ '/signal/feed.xml' | relative_url }}` (use the Liquid filter literally so Jekyll resolves the path). No calendar links, no Clarity Sprint pitch, no service-sale framing.
 
 ## Frontmatter template
 
@@ -138,7 +138,7 @@ The `issue` layout handles all the chrome (head, nav, eyebrow, H1, CTA card, foo
 
 Use plain markdown for prose. Use `<h2>` markdown headers (`##`) for the section titles (Section 1's diagnostic doesn't need a header — it's the lede; Section 2 is `## What's actually shipping this week` (or similar); Section 3 is `## What I'd ship in your app this week` (or similar)). The CTA card at the bottom is handled by the layout — do not write your own.
 
-For lists with custom spacing or component classes (e.g. `list-bullet`), drop into raw HTML inside the markdown — kramdown allows it freely. Use the most recent published Signal issue in `signal/` as the structural reference for tone and how to mix markdown with raw HTML for richer formatting.
+For lists with custom spacing or component classes (e.g. `list-bullet`), drop into raw HTML inside the markdown — kramdown allows it freely. Use the most recent published Signal issue in `_signal/` as the structural reference for tone and how to mix markdown with raw HTML for richer formatting.
 
 Do not introduce new CSS. If a styling need arises that the existing system doesn't cover, use a minimal inline style.
 
@@ -172,7 +172,7 @@ For each Approved row:
    - `description:` — derive from the first 1–2 sentences of the body
    - `date:` — the Notion `Publish Date` property in `YYYY-MM-DD` format
    - `issue_number:` — the value computed in step 2
-4. Write the file to `signal/YYYY-MM-DD.md` where `YYYY-MM-DD` is `Publish Date`.
+4. Write the file to `_signal/YYYY-MM-DD.md` where `YYYY-MM-DD` is `Publish Date`.
 5. Update `signal/index.html`:
    - Prepend a new `<li>` to the archive `<ul>` (format documented under "Archive list entry format" below)
    - Update the hero CTA `href` to point at the new `YYYY-MM-DD.html`
@@ -268,7 +268,7 @@ Create a new page in the GD Newsletter DB with these properties:
 | `Source Links` | The single most-cited URL (full source list lives in the body) |
 | `Feedback` | Run notes — cadence observations, voice cast notes, open questions for Paul, prior-issue questions resolved this week |
 
-Page body: the full markdown of the issue, exactly as it would appear at `signal/YYYY-MM-DD.md` after publish, including the trailing voice-notes section the prior issues use.
+Page body: the full markdown of the issue, exactly as it would appear at `_signal/YYYY-MM-DD.md` after publish, including the trailing voice-notes section the prior issues use.
 
 **Do not commit anything to the repo for the new draft.** The new draft only reaches the repo in Phase 1 of the next week's run, after Paul has reviewed and Approved it. If Paul marks it `Decline` instead, the next week's Phase 2 will sweep the lesson and Archive the row.
 

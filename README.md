@@ -71,7 +71,7 @@ Both letters: 700–1,000 words, no fluff, weekly cadence.
 
 A scheduled task fetches the relevant prompt ([`prompts/signal-prompt.md`](prompts/signal-prompt.md) or [`prompts/crafting-prompt.md`](prompts/crafting-prompt.md)) and runs the **5-phase routine** documented inside it:
 
-1. **Publish.** Sweep the unified Notion DB for any rows where `Newsletter = X` and `Status = Approved`. Commit each to `signal/` or `crafting/` and open a PR titled `<Newsletter>: Issue #N (YYYY-MM-DD)` against `main` (direct push to `main` is blocked by branch protection).
+1. **Publish.** Sweep the unified Notion DB for any rows where `Newsletter = X` and `Status = Approved`. Commit each to `_signal/` or `_crafting/` (Jekyll collections — issues are auto-listed by `signal/index.html` / `crafting/index.html` and surfaced in `signal/feed.xml` / `crafting/feed.xml`) and open a PR titled `<Newsletter>: Issue #N (YYYY-MM-DD)` against `main` (direct push to `main` is blocked by branch protection).
 2. **Learn.** Read the 5 most recent Approved/Published rows. Highest-weight signal is the `Note to next draft` field; supporting signals are `Editorial Notes`, the `Edited Version` diff, `Voice Pass`, `Voice Score`, and `Reception`.
 3. **Draft.** Web search for live signals from the past 7–14 days. Apply structure, voice, and topic priorities, weighted by what was learned.
 4. **Write to Notion.** Create a new row in the GD Newsletter DB with `Status = Draft` and the full markdown in the page body. Paul reviews and approves in Notion; the next week's run publishes it.
@@ -85,19 +85,24 @@ The Notion DB is the source of truth for content and feedback. The repo is the p
 ```
 golden-data/
 ├── README.md                   ← you are here
-├── _config.yml                 ← Jekyll config (baseurl, excludes)
+├── LICENSE                     ← © Golden Data LLC, all rights reserved
+├── _config.yml                 ← Jekyll config (baseurl, plugins, collections)
 ├── _layouts/
-│   ├── default.html            ← head + nav + footer chrome
+│   ├── default.html            ← head + nav + footer chrome (SEO via jekyll-seo-tag)
 │   └── issue.html              ← extends default; wraps issue body + CTA card
-├── index.html                  ← homepage (standalone HTML, copied as-is)
+├── index.html                  ← homepage (uses default layout)
 ├── styles.css                  ← shared design system
 ├── assets/                     ← logo, favicons, case-study images
-├── signal/                     ← Signal newsletter
-│   ├── index.html              ← Signal landing page (uses default layout)
-│   └── YYYY-MM-DD.md           ← weekly issues (use issue layout)
-├── crafting/                   ← Crafting newsletter
-│   ├── index.html              ← Crafting landing page
+├── _signal/                    ← Signal issue collection
+│   └── YYYY-MM-DD.md           ← weekly issues (auto-listed + fed via Atom)
+├── _crafting/                  ← Crafting issue collection
 │   └── YYYY-MM-DD.md           ← weekly issues
+├── signal/
+│   ├── index.html              ← Signal landing page (iterates site.signal)
+│   └── feed.xml                ← Atom feed (iterates site.signal)
+├── crafting/
+│   ├── index.html              ← Crafting landing page (iterates site.crafting)
+│   └── feed.xml                ← Atom feed (iterates site.crafting)
 └── prompts/
     ├── signal-prompt.md        ← Signal routine + voice + structure
     └── crafting-prompt.md      ← Crafting routine + voice + structure

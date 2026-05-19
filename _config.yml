@@ -25,6 +25,29 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+# Newsletter collections — auto-listed by signal/index.html, crafting/index.html, and their feeds
+collections:
+  signal:
+    output: true
+    permalink: /signal/:name.html
+  crafting:
+    output: true
+    permalink: /crafting/:name.html
+
+defaults:
+  - scope:
+      path: ""
+      type: signal
+    values:
+      layout: issue
+      newsletter: Signal
+  - scope:
+      path: ""
+      type: crafting
+    values:
+      layout: issue
+      newsletter: Crafting
+
 # Files Jekyll should NOT copy to the built site
 exclude:
   - README.md

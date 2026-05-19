@@ -2,7 +2,7 @@
 layout: null
 permalink: /crafting/feed.xml
 ---
-{% assign issues = site.pages | where: "layout", "issue" | where_exp: "p", "p.url contains '/crafting/'" | sort: "date" | reverse -%}
+{% assign issues = site.crafting | sort: "date" | reverse -%}
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Crafting · Golden Data</title>
