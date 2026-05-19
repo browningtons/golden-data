@@ -3,10 +3,27 @@ description: Golden Data ships the AI feature that makes the next step in your a
 url: https://browningtons.github.io
 baseurl: /golden-data
 
+# SEO / social
+author:
+  name: Paul Brown
+  email: thegoldendata@gmail.com
+logo: /assets/golden-data-logo.png
+social:
+  name: Golden Data LLC
+  links:
+    - https://www.linkedin.com/in/paulbrowningtons/
+twitter:
+  card: summary
+
 # Markdown
 markdown: kramdown
 kramdown:
   syntax_highlighter: rouge
+
+# Plugins (GitHub Pages allowlisted)
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
 # Files Jekyll should NOT copy to the built site
 exclude:
